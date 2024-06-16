@@ -16,8 +16,8 @@ public class NewsController {
     }
 
     @GetMapping("/news/{country}/{date}")
-    public String getNews(@PathVariable String country, @PathVariable String date) {
-        return newsApiService.fetchNews(country, date);
+    public NewsResponse getNews(@PathVariable String country, @PathVariable String date) {
+        return newsApiService.fetchTrendNews(country, date);
     }
 
     @GetMapping("/news/delete/{country}/{date}")
@@ -26,7 +26,7 @@ public class NewsController {
     }
 
     @GetMapping("/news/search/{keyword}/{pageSize}")
-    public String searchForSpecificNews(@PathVariable String keyword, @PathVariable String pageSize) {
+    public NewsResponse searchForSpecificNews(@PathVariable String keyword, @PathVariable String pageSize) {
         return newsApiService.fetchSpecificNews(keyword, pageSize);
     }
 }
