@@ -1,5 +1,6 @@
 package com.sqs.project.nachrichtenapp;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
@@ -18,20 +19,33 @@ public class NewsApiService {
     private final String BASE_URL = "https://newsapi.org/v2/top-headlines?country=";
 
 
-    public String fetchNews(String country, String pageSize) {
-        String newsData = redisTemplate.opsForValue().get("newsData");
-        if (newsData == null) {
+    public String fetchNews(String country,String date) {
+        String key = country + ":" + date;
+        String news = redisTemplate.opsForValue().get(key);
+        if (news == null) {
             RestTemplate restTemplate = new RestTemplate();
-            String URL = BASE_URL + country + "&pageSize=" + pageSize + "&apiKey=" + API_KEY;
+            String URL = BASE_URL + country + "&pageSize=5&apiKey=" + API_KEY;
             ResponseEntity<String> response = restTemplate.getForEntity(URL, String.class);
-            newsData = response.getBody();
-            saveNewsData(newsData);
+            news = response.getBody();
+            saveNews(key, news);
         }
-        return newsData;
+        return news;
+    }
+    public String fetchSpecificNews(String keyword, String pageSize) {
+            RestTemplate restTemplate = new RestTemplate();
+            String URL = "https://newsapi.org/v2/everything?q=" + keyword + "&pageSize=" + pageSize + "&apiKey=" + API_KEY;
+            ResponseEntity<String> response = restTemplate.getForEntity(URL, String.class);
+        return response.getBody();
+    }
+    private void saveNews(String key, String newsData) {
+        redisTemplate.opsForValue().set(key, newsData);
+        redisTemplate.expire(key, 1, TimeUnit.HOURS);
     }
 
-    private void saveNewsData(String newsData) {
-        redisTemplate.opsForValue().set("newsData", newsData);
-        redisTemplate.expire("newsData", 1, TimeUnit.HOURS);
+    public void deleteNews(String country, String date) {
+        String key = country + ":" + date;
+        redisTemplate.delete(key);
     }
+
+
 }
