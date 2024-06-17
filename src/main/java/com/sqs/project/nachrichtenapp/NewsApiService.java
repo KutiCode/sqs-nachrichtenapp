@@ -32,15 +32,15 @@ public class NewsApiService {
             }
         } else {
             RestTemplate restTemplate = new RestTemplate();
-            String URL = BASE_URL + country + "&pageSize=5&apiKey=" + API_KEY;
+            String URL = BASE_URL + country + "&apiKey=" + API_KEY;
             news = restTemplate.getForObject(URL, NewsResponse.class);
             saveNews(key, news);
         }
         return news;
     }
-    public NewsResponse fetchSpecificNews(String keyword, String pageSize) {
+    public NewsResponse fetchSpecificNews(String keyword) {
         RestTemplate restTemplate = new RestTemplate();
-        String URL = "https://newsapi.org/v2/everything?q=" + keyword + "&pageSize=" + pageSize + "&apiKey=" + API_KEY;
+        String URL = "https://newsapi.org/v2/everything?q=" + keyword + "&apiKey=" + API_KEY;
         NewsResponse response = restTemplate.getForObject(URL, NewsResponse.class);
         return response;
     }
@@ -54,8 +54,4 @@ public class NewsApiService {
         redisTemplate.expire(key, 1, TimeUnit.HOURS);
     }
 
-    public void deleteNews(String country, String date) {
-        String key = country + ":" + date;
-        redisTemplate.delete(key);
-    }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import Dropdown from './components/Dropdown';
@@ -7,6 +7,14 @@ import DetailedView from './components/DetailedView';
 import './App.css';
 
 function App() {
+    const [trendingTopics, setTrendingTopics] = useState([]);
+    const [selectedArticle, setSelectedArticle] = useState(null);
+
+    const handleSearchResults = (results) => {
+        setTrendingTopics(results);
+        setSelectedArticle(null);
+    };
+
     return (
         <div className="App">
             <Header />
@@ -22,13 +30,12 @@ function App() {
                             Anschließend kannst du auf der rechten Seite zwischen 5 Themen auswählen und dich durchlesen.
                         </p>
                     </div>
-                    <Dropdown label="Wähle ein Land aus" />
-                    <SearchBar placeholder="Suche nach was bestimmten" />
-                    <Dropdown label="Wähle ein Thema aus" />
+                    <Dropdown label="Wähle ein Land aus" setTrendingTopics={setTrendingTopics} />
+                    <SearchBar placeholder="Suche nach was bestimmten" onSearchResults={handleSearchResults} />
                 </div>
                 <div className="results">
-                    <ResultsList />
-                    <DetailedView />
+                    <ResultsList trendingTopics={trendingTopics} setSelectedArticle={setSelectedArticle} />
+                    <DetailedView selectedArticle={selectedArticle} />
                 </div>
             </div>
         </div>

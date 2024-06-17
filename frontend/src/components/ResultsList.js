@@ -1,15 +1,15 @@
 import React from 'react';
 
-function ResultsList() {
+function ResultsList({ trendingTopics, setSelectedArticle }) {
     return (
         <div className="results-list">
-            <h2>Top 5 Ergebnisse deiner Auswahl</h2>
+            <h2>Top 10 Ergebnisse deiner Auswahl</h2>
             <ul>
-                <li>Auswahl 1</li>
-                <li>Auswahl 2</li>
-                <li>Auswahl 3</li>
-                <li>Auswahl 4</li>
-                <li>Auswahl 5</li>
+                {trendingTopics.slice(0, 10).map((article, index) => (
+                    <li key={index} onClick={() => setSelectedArticle(article)}>
+                        {article.title} - {article.author}
+                    </li>
+                ))}
             </ul>
         </div>
     );
