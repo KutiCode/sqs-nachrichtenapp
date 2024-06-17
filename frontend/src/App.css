@@ -2,37 +2,88 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(12px + 2vmin); /* Erhöhte Schriftgröße */
   color: white;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 40%; /* Erhöhte Breite des linken Inhalts */
+  padding: 20px;
+}
+
+.search-bar, .dropdown {
+  margin-bottom: 20px;
+  width: 100%; /* Vollständige Breite */
+}
+
+.search-bar input, .dropdown select {
+  width: 70%; /* Breite des Eingabefelds und der Dropdowns */
+  padding: 10px; /* Innenabstand für größere Eingabe */
+  font-size: 1.2em; /* Größere Schriftgröße */
+}
+
+.search-bar button, .dropdown button {
+  padding: 10px; /* Innenabstand für größere Schaltfläche */
+  font-size: 1.2em; /* Größere Schriftgröße */
+  margin-left: 10px; /* Abstand zwischen Eingabefeld und Schaltfläche */
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 55%; /* Erhöhte Breite des rechten Inhalts */
+  padding: 20px;
+}
+
+.results-list {
+  margin-bottom: 20px;
+  width: 100%; /* Vollständige Breite */
+}
+
+.results-list h2 {
+  font-size: 1.5em; /* Größere Schriftgröße für Überschrift */
+  margin-bottom: 10px;
+}
+
+.results-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.results-list li {
+  font-size: 1.2em; /* Größere Schriftgröße für Listenelemente */
+  margin-bottom: 10px;
+}
+
+.detailed-view {
+  border: 1px solid #ccc;
+  padding: 20px; /* Innenabstand für größeren Inhalt */
+  width: 100%; /* Vollständige Breite */
+}
+
+.detailed-view h3 {
+  font-size: 1.5em; /* Größere Schriftgröße für Überschrift */
+}
+
+.detailed-view p {
+  font-size: 1.2em; /* Größere Schriftgröße für Text */
 }
