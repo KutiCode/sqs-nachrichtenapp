@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: com.sqs.project.nachrichtenapp.NewsApiServiceTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.325 s <<< FAILURE! -- in com.sqs.project.nachrichtenapp.NewsApiServiceTests
+com.sqs.project.nachrichtenapp.NewsApiServiceTests.testGetNews -- Time elapsed: 0.025 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "org.springframework.data.redis.core.RedisTemplate.opsForValue()" because "this.redisTemplate" is null
+	at com.sqs.project.nachrichtenapp.NewsApiService.fetchTrendNews(NewsApiService.java:25)
+	at com.sqs.project.nachrichtenapp.NewsApiServiceTests.testGetNews(NewsApiServiceTests.java:42)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
+com.sqs.project.nachrichtenapp.NewsApiServiceTests.testSaveAndRetrieveArticle -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.util.List.get(int)" because the return value of "com.sqs.project.nachrichtenapp.NewsResponse.getArticles()" is null
+	at com.sqs.project.nachrichtenapp.NewsApiServiceTests.testSaveAndRetrieveArticle(NewsApiServiceTests.java:51)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
