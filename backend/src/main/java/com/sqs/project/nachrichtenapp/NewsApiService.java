@@ -44,7 +44,7 @@ public class NewsApiService {
         NewsResponse response = restTemplate.getForObject(URL, NewsResponse.class);
         return response;
     }
-    private void saveNews(String key, NewsResponse newsData) {
+    void saveNews(String key, NewsResponse newsData) {
         try {
             String newsJson = objectMapper.writeValueAsString(newsData);
             redisTemplate.opsForValue().set(key, newsJson);
