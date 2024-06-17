@@ -27,7 +27,7 @@ function App() {
                         <p>
                             Anleitung: Benutze eine der Möglichkeiten um die Nachrichten deiner Wahl anzeigen zu lassen.
                             Beispiel: Du willst die Top Nachrichten aus Deutschland wissen dann wähle Deutschland aus und klicke auf GO!.
-                            Anschließend kannst du auf der rechten Seite zwischen 5 Themen auswählen und dich durchlesen.
+                            Anschließend kannst du auf der rechten Seite zwischen 10 Themen auswählen und dich durchlesen.
                         </p>
                     </div>
                     <Dropdown label="Wähle ein Land aus" setTrendingTopics={setTrendingTopics} />
