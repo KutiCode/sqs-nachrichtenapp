@@ -1,6 +1,4 @@
 package com.sqs.project.nachrichtenapp;
-import com.sqs.project.nachrichtenapp.Article;
-import com.sqs.project.nachrichtenapp.Source;
 import java.util.List;
 
 public class NewsResponse {

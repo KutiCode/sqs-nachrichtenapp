@@ -41,17 +41,16 @@ public class NewsApiService {
             }
         } else {
             RestTemplate restTemplate = new RestTemplate();
-            String URL = BASEURL + country + "&apiKey=" + newsApiKey;
-            news = restTemplate.getForObject(URL, NewsResponse.class);
+            String url = BASEURL + country + "&apiKey=" + newsApiKey;
+            news = restTemplate.getForObject(url, NewsResponse.class);
             saveNews(key, news);
         }
         return news;
     }
     public NewsResponse fetchSpecificNews(String keyword) {
         RestTemplate restTemplate = new RestTemplate();
-        String URL = "https://newsapi.org/v2/everything?q=" + keyword + "&apiKey=" + newsApiKey;
-        NewsResponse response = restTemplate.getForObject(URL, NewsResponse.class);
-        return response;
+        String url = "https://newsapi.org/v2/everything?q=" + keyword + "&apiKey=" + newsApiKey;
+        return restTemplate.getForObject(url, NewsResponse.class);
     }
     void saveNews(String key, NewsResponse newsData) throws RedisConnectionFailureException {
         try {
