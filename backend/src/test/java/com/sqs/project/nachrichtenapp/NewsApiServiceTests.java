@@ -12,9 +12,9 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -45,6 +45,8 @@ class NewsApiServiceTests {
 
         assertNotNull(response, "Die Verbindung zur API war nicht erfolgreich");
     }
+
+
     @Test
     void testSaveAndRetrieveArticle() {
         String key = "us:2024-06-16";
@@ -63,5 +65,26 @@ class NewsApiServiceTests {
 
         assertNotNull(retrievedArticle);
         assertEquals(article, retrievedArticle);
+    }
+
+    @Test
+    void testRedisTimeout() throws InterruptedException {
+        // Definieren Sie den Schlüssel und den erwarteten Wert
+        String key = "testKey";
+        NewsResponse expectedResponse = new NewsResponse();
+        expectedResponse.setStatus("Test Value");
+
+        // Set up the behavior for redisTemplate.opsForValue()
+        when(redisTemplate.opsForValue()).thenReturn(valueOperations);
+
+        // Rufen Sie die Methode saveNews auf
+        newsApiService.saveNews(key, expectedResponse);
+
+        // Warten Sie länger als das Ablaufdatum
+        Thread.sleep(TimeUnit.SECONDS.toMillis(10));
+
+        // Rufen Sie die Methode get auf und überprüfen Sie, ob der Wert null ist
+        Article actualValue = redisTemplate.opsForValue().get(key);
+        assertNull(actualValue, "Der Wert sollte nach dem Ablaufdatum null sein");
     }
 }
