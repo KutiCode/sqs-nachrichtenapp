@@ -1,9 +1,5 @@
 package com.sqs.project.nachrichtenapp;
 
-
-import com.sqs.project.nachrichtenapp.Article;
-import com.sqs.project.nachrichtenapp.NewsResponse;
-import com.sqs.project.nachrichtenapp.NewsApiService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -13,9 +9,12 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -41,6 +40,10 @@ class NewsApiServiceTests {
 
         when(restTemplate.getForObject(url, NewsResponse.class)).thenReturn(mockResponse);
 
+        // Set up the mock behavior for RedisTemplate and ValueOperations
+        when(redisTemplate.opsForValue()).thenReturn(valueOperations);
+        when(valueOperations.get(anyString())).thenReturn(new Article());
+
         NewsResponse newsResponse = newsApiService.fetchTrendNews("us", "2024-06-17");
         assertNotNull(newsResponse);
     }
@@ -49,7 +52,11 @@ class NewsApiServiceTests {
     void testSaveAndRetrieveArticle() {
         String key = "us:2024-06-16";
         NewsResponse mockResponse = new NewsResponse();
-        // Initialize article with sample data
+        // Initialize articles list with sample data
+        List<Article> articles = new ArrayList<>();
+        articles.add(new Article());
+        mockResponse.setArticles(articles);
+
         Article article = mockResponse.getArticles().get(0);
         when(redisTemplate.opsForValue()).thenReturn(valueOperations);
         when(valueOperations.get(key)).thenReturn(article);
@@ -61,4 +68,3 @@ class NewsApiServiceTests {
         assertEquals(article, retrievedArticle);
     }
 }
-
