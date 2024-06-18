@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class NewsController {
@@ -16,7 +18,7 @@ public class NewsController {
     }
 
     @GetMapping("/news/{country}/{date}")
-    public NewsResponse getNews(@PathVariable String country, @PathVariable String date) {
+    public NewsResponse getNews(@PathVariable String country, @PathVariable String date) throws IOException {
         return newsApiService.fetchTrendNews(country, date);
     }
 
