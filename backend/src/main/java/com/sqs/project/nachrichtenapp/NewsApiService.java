@@ -32,7 +32,7 @@ public class NewsApiService {
     public NewsResponse fetchTrendNews(String country, String date) throws IOException {
         String key = country + ":" + date;
         String newsJson = redisTemplate.opsForValue().get(key);
-        NewsResponse news = null;
+        NewsResponse news;
         if (newsJson != null) {
             try {
                 news = objectMapper.readValue(newsJson, NewsResponse.class);
