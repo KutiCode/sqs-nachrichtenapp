@@ -26,7 +26,7 @@ public class NewsApiService {
     private String newsApiKey;
 
 
-    private final static String baseURL = "https://newsapi.org/v2/top-headlines?country=";
+    private static final String baseURL = "https://newsapi.org/v2/top-headlines?country=";
 
 
     public NewsResponse fetchTrendNews(String country, String date) throws IOException {
