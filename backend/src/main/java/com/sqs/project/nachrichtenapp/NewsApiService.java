@@ -16,11 +16,14 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class NewsApiService {
 
-    @Autowired
-    private RedisTemplate<String, String> redisTemplate;
-    private ObjectMapper objectMapper = new ObjectMapper();
 
+    private final RedisTemplate<String, String> redisTemplate;
+    private final ObjectMapper objectMapper;
 
+    public NewsApiService(RedisTemplate<String, String> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+        this.objectMapper = new ObjectMapper();
+    }
     @Value("${news.api.key}")
     private String newsApiKey;
 
