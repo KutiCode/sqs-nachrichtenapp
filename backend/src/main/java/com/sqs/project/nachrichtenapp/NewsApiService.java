@@ -26,7 +26,7 @@ public class NewsApiService {
     private String newsApiKey;
 
 
-    private static final String baseURL = "https://newsapi.org/v2/top-headlines?country=";
+    private static final String BASEURL = "https://newsapi.org/v2/top-headlines?country=";
 
 
     public NewsResponse fetchTrendNews(String country, String date) throws IOException {
@@ -41,7 +41,7 @@ public class NewsApiService {
             }
         } else {
             RestTemplate restTemplate = new RestTemplate();
-            String URL = baseURL + country + "&apiKey=" + newsApiKey;
+            String URL = BASEURL + country + "&apiKey=" + newsApiKey;
             news = restTemplate.getForObject(URL, NewsResponse.class);
             saveNews(key, news);
         }
