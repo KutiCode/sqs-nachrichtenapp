@@ -2,11 +2,9 @@ package com.sqs.project.nachrichtenapp;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,7 +26,7 @@ public class NewsApiService {
     private String newsApiKey;
 
 
-    private final String BASE_URL = "https://newsapi.org/v2/top-headlines?country=";
+    private final static String baseURL = "https://newsapi.org/v2/top-headlines?country=";
 
 
     public NewsResponse fetchTrendNews(String country, String date) throws IOException {
@@ -43,7 +41,7 @@ public class NewsApiService {
             }
         } else {
             RestTemplate restTemplate = new RestTemplate();
-            String URL = BASE_URL + country + "&apiKey=" + newsApiKey;
+            String URL = baseURL + country + "&apiKey=" + newsApiKey;
             news = restTemplate.getForObject(URL, NewsResponse.class);
             saveNews(key, news);
         }
