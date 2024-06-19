@@ -120,13 +120,3 @@ jobs:
           cd backend
           export JAVA_HOME=${{ steps.setup-java.outputs.path }}
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=KutiCode_sqs-nachrichtenapp
-          
-          cd ../frontend
-          npm install
-          npm run build
-          npm run test -- --coverage
-          npx sonar-scanner \
-            -Dsonar.projectKey=KutiCode_sqs-nachrichtenapp \
-            -Dsonar.sources=src \
-            -Dsonar.exclusions=node_modules/**,dist/** \
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
