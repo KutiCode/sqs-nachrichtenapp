@@ -34,6 +34,7 @@ jobs:
           export JAVA_HOME=${{ steps.setup-java.outputs.path }}
           ./mvnw clean install
           ./mvnw test
+          ./mvnw spring-boot:run &
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -58,25 +59,25 @@ jobs:
           cd frontend
           npm run test -- --coverage
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy Backend
-        run: |
-          cd backend
-          ./mvnw clean install
-          ./mvnw spring-boot:run &
-
-      - name: Deploy Frontend
-        run: |
-          cd frontend
-          npm start &
+#  deploy:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    if: github.ref == 'refs/heads/main'
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#
+#      - name: Deploy Backend
+#        run: |
+#          cd backend
+#          ./mvnw clean install
+#          ./mvnw spring-boot:run &
+#
+#      - name: Deploy Frontend
+#        run: |
+#          cd frontend
+#          npm start &
 
   sonarcloud:
     needs: build
