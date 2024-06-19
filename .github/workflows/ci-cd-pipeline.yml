@@ -22,6 +22,7 @@ jobs:
       - name: Build and test Spring Boot Backend
         run: |
           cd backend
+          export JAVA_HOME=${{ steps.setup-java.outputs.path }}
           ./mvnw clean install
           ./mvnw test
 
