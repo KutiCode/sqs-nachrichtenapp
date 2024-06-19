@@ -12,7 +12,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --watchAll",
+    "test": "jest --ci && exit 0",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
