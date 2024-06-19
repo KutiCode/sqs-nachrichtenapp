@@ -47,7 +47,7 @@ jobs:
         run: |
           cd frontend
           npm test
-
+          q
   deploy:
     needs: [build-backend, build-frontend]
     runs-on: ubuntu-latest
