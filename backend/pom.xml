@@ -15,6 +15,8 @@
 	<description>Zeige deine Nachrichten mit der tollen Nachrichten Anwendung an!</description>
 	<properties>
 		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 		<spring-boot.version>3.3.0</spring-boot.version>
 		<junit-jupiter.version>5.10.2</junit-jupiter.version>
 		<sonar.organization>sqs-nachrichtenapp</sonar.organization>
