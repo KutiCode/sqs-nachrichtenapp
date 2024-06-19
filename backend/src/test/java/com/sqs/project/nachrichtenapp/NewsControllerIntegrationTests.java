@@ -1,14 +1,11 @@
 package com.sqs.project.nachrichtenapp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sqs.project.nachrichtenapp.NewsController;
-import com.sqs.project.nachrichtenapp.NewsResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 
