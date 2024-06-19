@@ -37,7 +37,10 @@ class NewsControllerIntegrationTests {
 
         ResponseEntity<NewsResponse> response = restTemplate.getForEntity(url, NewsResponse.class);
 
-        assertEquals(200, response.getStatusCodeValue());
+        // Verwenden Sie getStatusCode und value anstelle von getStatusCodeValue
+        int statusCode = response.getStatusCode().value();
+        assertEquals(200, statusCode);
+
         assertNotNull(response.getBody());
         // Additional assertions to verify the content of the response body
     }
