@@ -48,7 +48,7 @@ public class NewsApiServiceTest {
 
 
     @Test
-    public void testFetchTrendNews_NotCached() throws IOException {
+    public void testFetchTrendNewsNotCached() throws IOException {
         String key = "us:2023-06-20";
         String url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=bd07d53bf22d404bbc22dbefe92997e0";
         NewsResponse newsResponse = new NewsResponse();
@@ -85,6 +85,16 @@ public class NewsApiServiceTest {
         String result = objectMapper.writeValueAsString(newsResponse);
         assertEquals("{\"status\":null,\"totalResults\":0,\"articles\":null}",result );
 
+    }
+    @Test
+    public void testFetchTrendNewsCached() throws IOException {
+        String key = "us:2023-06-20";
+        String newsJson = "{\"status\":null,\"totalResults\":0,\"articles\":null}";
+
+        when(valueOperations.get(key)).thenReturn(newsJson);
+
+        NewsResponse news = newsApiService.fetchTrendNews("us", "2023-06-20");
+        assertNotNull(news);
     }
 
 }
