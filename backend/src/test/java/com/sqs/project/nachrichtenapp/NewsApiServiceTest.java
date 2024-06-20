@@ -1,5 +1,6 @@
 package com.sqs.project.nachrichtenapp;
 
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
@@ -9,17 +10,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.client.RestTemplate;
-
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class NewsApiServiceTest {
@@ -72,6 +70,21 @@ public class NewsApiServiceTest {
 
         NewsResponse news = newsApiService.fetchSpecificNews(keyword);
         assertNotNull(news);
+    }
+
+    @Test
+    public void testSaveNews() throws JsonProcessingException {
+        String key = "us:2023-06-20";
+        NewsResponse newsResponse = new NewsResponse();
+
+        when(objectMapper.writeValueAsString(newsResponse)).thenReturn("{\"status\":null,\"totalResults\":0,\"articles\":null}");
+        newsApiService.saveNews(key, newsResponse);
+        verify(valueOperations, times(1)).set(key, "{\"status\":null,\"totalResults\":0,\"articles\":null}");
+
+        // Überprüfen Sie, ob der objectMapper wie erwartet funktioniert
+        String result = objectMapper.writeValueAsString(newsResponse);
+        assertEquals("{\"status\":null,\"totalResults\":0,\"articles\":null}",result );
+
     }
 
 }
