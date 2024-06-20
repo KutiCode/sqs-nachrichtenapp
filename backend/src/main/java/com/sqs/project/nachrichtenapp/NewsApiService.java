@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -23,9 +22,9 @@ public class NewsApiService {
 
     private static final String BASEURL = "https://newsapi.org/v2/top-headlines?country=";
 
-    public NewsApiService(RedisTemplate<String, String> redisTemplate, ObjectMapper objectMapper) {
+    public NewsApiService(RedisTemplate<String, String> redisTemplate) {
         this.redisTemplate = redisTemplate;
-        this.objectMapper = objectMapper;
+        this.objectMapper = new ObjectMapper(); // Initialisieren Sie das ObjectMapper-Objekt
         this.restTemplate = new RestTemplate(); // Default RestTemplate
     }
 
@@ -71,11 +70,4 @@ public class NewsApiService {
         redisTemplate.expire(key, 1, TimeUnit.HOURS);
     }
 
-    public NewsResponse fetchNewsFromRedis(String key) throws JsonProcessingException {
-        String json = redisTemplate.opsForValue().get(key);
-        if (json == null) {
-            return null;
-        }
-        return objectMapper.readValue(json, NewsResponse.class);
-    }
 }
