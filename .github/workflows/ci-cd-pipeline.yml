@@ -13,6 +13,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      docker:
+        image: docker:20.10.7
+        options: --privileged
+        ports:
+          - 8080:8080
+          - 80:80
+          - 6379:6379
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -34,7 +43,6 @@ jobs:
           export JAVA_HOME=${{ steps.setup-java.outputs.path }}
           ./mvnw clean install
           ./mvnw test
-          ./mvnw spring-boot:run &
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -58,6 +66,20 @@ jobs:
         run: |
           cd frontend
           npm run test -- --coverage
+
+      - name: Build Docker images
+        run: |
+          docker-compose build
+
+      - name: Start Docker containers
+        run: |
+          docker-compose up -d
+
+      - name: Wait for services to be ready
+        run: |
+          echo "Waiting for services to be ready..."
+          sleep 30
+          docker-compose ps
 
   sonarcloud-backend:
     needs: build
