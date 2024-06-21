@@ -12,6 +12,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
 
     steps:
       - name: Checkout code
@@ -33,6 +38,9 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Build and start Docker containers
+        run: docker-compose up -d --build
+
       - name: Install dependencies and build React Frontend
         run: |
           cd frontend
@@ -51,6 +59,10 @@ jobs:
           cd frontend
           npm run test -- --coverage
 
+      - name: Build backend
+        run: |
+          cd backend
+          mvn clean install
 
   sonarcloud-backend:
     needs: build
@@ -66,11 +78,6 @@ jobs:
         with:
           java-version: 17
           distribution: 'zulu'
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
@@ -91,6 +98,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
+          cd backend
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sqs-test_backend -Dsonar.java.coveragePlugin=jacoco
 
   sonarcloud-frontend:
