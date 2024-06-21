@@ -1,4 +1,4 @@
-package com.sqs.project.nachrichtenapp.api;
+package com.sqs.project.nachrichtenapp.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sqs.project.nachrichtenapp.model.NewsResponse;

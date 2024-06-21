@@ -1,7 +1,5 @@
 package com.sqs.project.nachrichtenapp.service;
 
-import com.sqs.project.nachrichtenapp.api.ApiService;
-import com.sqs.project.nachrichtenapp.database.RedisService;
 import com.sqs.project.nachrichtenapp.model.NewsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

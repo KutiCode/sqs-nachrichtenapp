@@ -1,4 +1,4 @@
-package com.sqs.project.nachrichtenapp.database;
+package com.sqs.project.nachrichtenapp.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

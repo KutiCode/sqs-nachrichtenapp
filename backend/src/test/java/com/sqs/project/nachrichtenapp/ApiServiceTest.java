@@ -1,7 +1,7 @@
 package com.sqs.project.nachrichtenapp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sqs.project.nachrichtenapp.api.ApiService;
+import com.sqs.project.nachrichtenapp.service.ApiService;
 import com.sqs.project.nachrichtenapp.model.NewsResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

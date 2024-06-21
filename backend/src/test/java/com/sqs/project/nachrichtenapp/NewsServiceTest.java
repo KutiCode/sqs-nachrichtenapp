@@ -1,7 +1,7 @@
 package com.sqs.project.nachrichtenapp;
 
-import com.sqs.project.nachrichtenapp.api.ApiService;
-import com.sqs.project.nachrichtenapp.database.RedisService;
+import com.sqs.project.nachrichtenapp.service.ApiService;
+import com.sqs.project.nachrichtenapp.service.RedisService;
 import com.sqs.project.nachrichtenapp.model.NewsResponse;
 import com.sqs.project.nachrichtenapp.service.NewsService;
 import org.junit.jupiter.api.BeforeEach;
