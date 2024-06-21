@@ -1,18 +1,12 @@
-# Dockerfile für Spring Boot Backend
-FROM eclipse-temurin:17-jdk-jammy as build
+# Frontend Dockerfile
+FROM node:18 AS build
 
 WORKDIR /app
+COPY package*.json ./
+RUN npm install
 
 COPY . .
+RUN npm run build
 
-RUN ./mvnw clean package -DskipTests
-
-FROM eclipse-temurin:17-jdk-jammy
-
-WORKDIR /app
-
-COPY --from=build /app/target/*.jar app.jar
-
-EXPOSE 8080
-
-ENTRYPOINT ["java", "-jar", "app.jar"]
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
