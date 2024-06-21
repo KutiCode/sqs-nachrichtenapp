@@ -22,7 +22,7 @@ public class ApiService {
     }
 
     public NewsResponse fetchNewsFromApi(String country, String date) throws IOException {
-        String url = "https://newsapi.org/v2/top-headlines?country=" + country + "&apiKey=bd07d53bf22d404bbc22dbefe92997e0"; //+ newsApiKey;
+        String url = "https://newsapi.org/v2/top-headlines?country=" + country + "&apiKey="+ newsApiKey;
         String jsnResponse = restTemplate.getForObject(url, String.class);
         return objectMapper.readValue(jsnResponse, NewsResponse.class);
     }

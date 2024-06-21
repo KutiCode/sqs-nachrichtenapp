@@ -23,7 +23,6 @@ public class NewsService {
     public NewsResponse fetchNews(String country, String date) throws IOException {
         String key = country + ":" + date;
         NewsResponse news = redisService.getNewsData(key);
-
         if (news == null) {
             news = apiService.fetchNewsFromApi(country, date);
 

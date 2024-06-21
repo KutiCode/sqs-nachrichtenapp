@@ -1,6 +1,7 @@
 package com.sqs.project.nachrichtenapp.model;
 
 public class Article {
+    private Source source;
     private String author;
     private String title;
     private String description;
@@ -9,6 +10,12 @@ public class Article {
     private String publishedAt;
     private String content;
 
+    public Source getSource() {
+        return source;
+    }
+    public void setSource(Source source) {
+        this.source = source;
+    }
     public String getAuthor() {
         return author;
     }

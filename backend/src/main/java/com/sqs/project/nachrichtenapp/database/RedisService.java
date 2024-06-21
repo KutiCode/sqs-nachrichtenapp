@@ -36,8 +36,7 @@ public class RedisService{
         if (newsJson != null) {
             return objectMapper.readValue(newsJson, NewsResponse.class);
         }else {
-            throw new JsonProcessingException("Could not fetch data from Redis") {
-            };
+            return null;
         }
     }
 
