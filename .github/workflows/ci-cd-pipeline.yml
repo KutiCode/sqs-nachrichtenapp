@@ -63,6 +63,12 @@ jobs:
           sleep 30
           docker-compose -f docker-compose.test.yml ps
 
+      - name: Debug - List files in backend container
+        run: docker-compose -f docker-compose.test.yml exec -T backend ls -la /app
+
+      - name: Debug - Print working directory in backend container
+        run: docker-compose -f docker-compose.test.yml exec -T backend pwd
+
       - name: Run backend tests
         run: |
           docker-compose -f docker-compose.test.yml exec -T backend ./mvnw clean test
