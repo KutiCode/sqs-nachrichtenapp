@@ -13,15 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      docker:
-        image: docker:20.10.7
-        options: --privileged
-        ports:
-          - 8080:8080
-          - 80:80
-          - 6379:6379
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -74,8 +65,7 @@ jobs:
 
       - name: Run backend tests
         run: |
-          cd backend
-          ./mvnw clean test
+          docker-compose -f docker-compose.test.yml exec backend ./mvnw clean test
         env:
           SPRING_REDIS_HOST: redis
           SPRING_REDIS_PORT: 6379
