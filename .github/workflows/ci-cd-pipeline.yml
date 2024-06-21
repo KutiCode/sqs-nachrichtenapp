@@ -14,9 +14,12 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      redis:
-        image: redis:alpine
+      docker:
+        image: docker:20.10.7
+        options: --privileged
         ports:
+          - 8080:8080
+          - 80:80
           - 6379:6379
 
     steps:
@@ -33,16 +36,6 @@ jobs:
 
       - name: Verify Java version
         run: java -version
-
-      - name: Build and Test Backend
-        run: |
-          cd backend
-          export JAVA_HOME=${{ steps.setup-java.outputs.path }}
-          ./mvnw clean install
-          ./mvnw test
-        env:
-          SPRING_REDIS_HOST: redis
-          SPRING_REDIS_PORT: 6379
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -68,19 +61,27 @@ jobs:
           npm run test -- --coverage
 
       - name: Build Docker images
-        run: |
-          docker-compose build
+        run: docker-compose -f docker-compose.test.yml build
 
-      - name: Start Docker containers
-        run: |
-          docker-compose up -d
+      - name: Start Docker containers for tests
+        run: docker-compose -f docker-compose.test.yml up -d
 
       - name: Wait for services to be ready
         run: |
           echo "Waiting for services to be ready..."
           sleep 30
-          docker-compose ps
+          docker-compose -f docker-compose.test.yml ps
 
+      - name: Run backend tests
+        run: |
+          cd backend
+          ./mvnw clean test
+        env:
+          SPRING_REDIS_HOST: redis
+          SPRING_REDIS_PORT: 6379
+
+      - name: Stop and remove Docker containers
+        run: docker-compose -f docker-compose.test.yml down
 
   sonarcloud-backend:
     needs: build
