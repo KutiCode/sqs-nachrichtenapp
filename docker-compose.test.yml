@@ -18,7 +18,3 @@ services:
     networks:
       - test_network
     working_dir: /app
-
-networks:
-  test_network:
-    driver: bridge
