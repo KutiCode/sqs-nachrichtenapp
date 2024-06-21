@@ -1,4 +1,5 @@
-# Dockerfile für Spring Boot Backend
+# Dockerfile für das Backend
+
 FROM eclipse-temurin:17-jdk-jammy as build
 
 WORKDIR /app
