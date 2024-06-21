@@ -59,27 +59,7 @@ jobs:
           cd frontend
           npm run test -- --coverage
 
-#  deploy:
-#    needs: build
-#    runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/main'
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#
-#      - name: Deploy Backend
-#        run: |
-#          cd backend
-#          ./mvnw clean install
-#          ./mvnw spring-boot:run &
-#
-#      - name: Deploy Frontend
-#        run: |
-#          cd frontend
-#          npm start &
-
-  sonarcloud:
+  sonarcloud-backend:
     needs: build
     runs-on: ubuntu-latest
 
@@ -113,11 +93,43 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Build and analyze Backend and Frontend
+      - name: Build and analyze Spring boot backend
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          cd backend
-          export JAVA_HOME=${{ steps.setup-java.outputs.path }}
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=KutiCode_sqs-nachrichtenapp
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sqs-test_backend -Dsonar.java.coveragePlugin=jacoco
+
+  sonarcloud-frontend:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Run SonarCloud Scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          cd frontend
+          npx sonar-scanner -Dsonar.projectKey=sqs-test_frontend -Dsonar.sources=src -Dsonar.tests=src -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
