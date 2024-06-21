@@ -1,6 +1,9 @@
-com/sqs/project/nachrichtenapp/Source.class
-com/sqs/project/nachrichtenapp/NewsResponse.class
-com/sqs/project/nachrichtenapp/NewsApiService.class
-com/sqs/project/nachrichtenapp/Article.class
-com/sqs/project/nachrichtenapp/NachrichtenappApplication.class
-com/sqs/project/nachrichtenapp/NewsController.class
+com/sqs/project/nachrichtenapp/database/RedisService.class
+com/sqs/project/nachrichtenapp/model/Article.class
+com/sqs/project/nachrichtenapp/Application/NachrichtenappApplication.class
+com/sqs/project/nachrichtenapp/service/NewsService.class
+com/sqs/project/nachrichtenapp/controller/NewsController.class
+com/sqs/project/nachrichtenapp/model/Source.class
+com/sqs/project/nachrichtenapp/model/NewsResponse.class
+com/sqs/project/nachrichtenapp/api/ApiService.class
+com/sqs/project/nachrichtenapp/database/RedisService$1.class

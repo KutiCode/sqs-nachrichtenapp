@@ -1,6 +1,8 @@
-/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/NewsApiService.java
-/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/Article.java
-/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/NewsResponse.java
-/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/NewsController.java
-/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/NachrichtenappApplication.java
-/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/Source.java
+/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/controller/NewsController.java
+/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/database/RedisService.java
+/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/model/Article.java
+/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/Application/NachrichtenappApplication.java
+/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/model/Source.java
+/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/service/NewsService.java
+/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/model/NewsResponse.java
+/Users/kuticode/sqs-nachrichtenapp/backend/src/main/java/com/sqs/project/nachrichtenapp/api/ApiService.java
