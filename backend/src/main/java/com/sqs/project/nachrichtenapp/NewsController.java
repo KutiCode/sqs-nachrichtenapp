@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001", "http://localhost:80", "http://localhost"})
+@CrossOrigin(origins = "http://localhost:3000")
 public class NewsController {
 
     private final NewsApiService newsApiService;
