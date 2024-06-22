@@ -64,12 +64,28 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 | User --> Nachrichtenapp | Land auswählen oder Schlagwort suchen  | Benutzeroberflächenaktualisierungen  |
 | Nachrichtenapp --> User | Benutzeroberflächenaktualisierungen | Nachrichten anzeigen  |
 | Nachrichtenapp --> News API  | Suchanfrage nach Land oder Schlagwort   | - |
-| News API--> Nachrichtenapp | - | Übertragung der Nachrichten  |
+| News API --> Nachrichtenapp | - | Übertragung der Nachrichten  |
 
 
 ### Technischer- oder Verteilungskontext
 
 ![Technischer Kontext](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/UML_Deployment%20Diagramm.png)
+
+| Technischer Kanal              | Eingabe                    | Ausgabe                                  | 
+| ------------------ | -------------------------- | -------------------------------------------------- |
+| User --> React Frontend | Benutzeraktion (Land auswählen oder Schlagwort eingeben)  | Aktualisierung der Benutzeroberfläche  |
+| React Frontend --> NewsController | HTTP Request (Land oder Schlagwort)   | HTTP Response (Nachrichten)  |
+| NewsController --> NewsService | Request News Data  | Ergebnis der Datenabfrage   |
+| NewsService --> ApiService | API Request (Land oder Schlagwort)  | API Response (Nachrichten)  |
+| ApiService --> News API | HTTP Request (Land oder Schlagwort)  | Liste der Nachrichten  |
+| News API --> ApiService | - | Übertragung der Nachrichten  |
+| ApiService --> NewsService | Api Response   |  Übertragung der Nachrichten  |
+| NewsService --> RedisService | Datenabfrage  |  Daten speichern oder abrufen |
+| RedisService --> RedisCache | Redis-Abfrage   |  Redis Response |
+| RedisCache --> RedisService | -  |  Übertragung der Nachrichten  |
+| RedisService --> NewsService |  Datenkonvertierung |  Übertragung der Nachrichten |
+| NewsService --> NewsController | Service Response  |  Übertragung der Nachrichten |
+| NewsController --> ReactFrontend | HTTP Response  | Aktualisierung der Benutzeroberfläche |
 
 ## Lösungsstrategie
 
