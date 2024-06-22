@@ -162,7 +162,7 @@ jobs:
           cd frontend
           npx sonar-scanner \
             -Dsonar.projectKey=sqs-test_frontend \
-            -Dsonar.organization=<your_organization> \
+            -Dsonar.organization=SQS-Projekt \
             -Dsonar.sources=src \
             -Dsonar.tests=src \
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
