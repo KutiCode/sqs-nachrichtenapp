@@ -10,6 +10,23 @@ on:
       - main
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Lint Backend Dockerfile with Hadolint
+        uses: hadolint/hadolint-action@v2
+        with:
+          dockerfile: ./backend/Dockerfile
+
+      - name: Lint Frontend Dockerfile with Hadolint
+        uses: hadolint/hadolint-action@v2
+        with:
+          dockerfile: ./frontend/Dockerfile
+
   build-test:
     runs-on: ubuntu-latest
     services:
