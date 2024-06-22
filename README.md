@@ -69,6 +69,8 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 
 ### Technischer- oder Verteilungskontext
 
+![Technischer Kontext](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/UML_Deployment%20Diagramm.png)
+
 ## Lösungsstrategie
 
 ## Baueinsicht
