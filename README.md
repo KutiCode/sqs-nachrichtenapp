@@ -20,7 +20,7 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 |                |                |                |                |
 
 
-Qualitätskriterium	Beschreibung	Ziele	Maßnahmen
+
 ### Stakeholder
 
 ## Randbedingungen
