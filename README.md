@@ -12,6 +12,15 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 
 ### Qualitätsziele
 
+| Qualitätskriterium       | Beschreibung       | Ziele       | Maßnahmen       |
+| -------------- | -------------- | -------------- | -------------- |
+|                |                |                |                |
+|                |                |                |                |
+|                |                |                |                |
+|                |                |                |                |
+
+
+Qualitätskriterium	Beschreibung	Ziele	Maßnahmen
 ### Stakeholder
 
 ## Randbedingungen
