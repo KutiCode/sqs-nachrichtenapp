@@ -24,7 +24,7 @@ public class RedisService{
         try {
             String newsJson = objectMapper.writeValueAsString(newsData);
             redisTemplate.opsForValue().set(key, newsJson);
-            redisTemplate.expire(key, 1, TimeUnit.HOURS);
+            redisTemplate.expire(key, 24, TimeUnit.HOURS);
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Error saving news data", e);
 

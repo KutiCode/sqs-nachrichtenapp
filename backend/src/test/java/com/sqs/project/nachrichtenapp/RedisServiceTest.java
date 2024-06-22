@@ -2,8 +2,8 @@ package com.sqs.project.nachrichtenapp;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sqs.project.nachrichtenapp.service.RedisService;
 import com.sqs.project.nachrichtenapp.model.NewsResponse;
+import com.sqs.project.nachrichtenapp.service.RedisService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class RedisServiceTest {
@@ -49,7 +50,7 @@ public class RedisServiceTest {
         redisService.saveNewsData("testKey", mockResponse);
 
         verify(valueOperations, times(1)).set("testKey", mockResponseJson);
-        verify(redisTemplate, times(1)).expire("testKey", 1, TimeUnit.HOURS);
+        verify(redisTemplate, times(1)).expire("testKey", 24, TimeUnit.HOURS);  // TTL auf 24 Stunden setzen
     }
 
     @Test

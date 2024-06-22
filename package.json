@@ -1,0 +1,17 @@
+{
+  "name": "sqs-nachrichtenapp",
+  "version": "1.0.0",
+  "description": "## Einführung und Ziele",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.14.8",
+    "playwright": "^1.44.1"
+  }
+}
