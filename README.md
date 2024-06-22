@@ -46,6 +46,14 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 
 ### Organisatorische Randbedingungen
 
+- Zeitvorgabe: Der Abgabetermin für das Projekt ist der 23. Juni 2024.
+
+- Abnahmekriterien: Die Abnahme des Projekts erfolgt bei vollständiger Erfüllung der Aufgabenstellung.
+  
+- Dokumentationsanforderungen: Für die Projektdokumentation ist das arc42 Template zu verwenden.
+
+- Kommunikationsweg: Es finden wöchentliche Besprechungen jeden Montag während der Vorlesung statt. Alternativ können Anliegen per E-Mail an mario-leander.reimer@th-rosenheim.de gesendet werden.
+  
 ## Kontextabgrenzung
 
 ### Fachlicher Kontext
