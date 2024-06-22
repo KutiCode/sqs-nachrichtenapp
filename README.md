@@ -1,4 +1,4 @@
-# Nachrichten App
+# Nachrichtenapp
 
 ## Einführung und Ziele
 
@@ -57,6 +57,15 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 ## Kontextabgrenzung
 
 ### Fachlicher Kontext
+
+
+| Kommunikationsbeziehung | Eingabe                        | Ausgabe                                            | 
+| ----------------------- | -------------------------------| -------------------------------------------------- |
+| User --> Nachrichtenapp | Land auswählen oder Schlagwort suchen  | Benutzeroberflächenaktualisierungen  |
+| Nachrichtenapp --> User | Benutzeroberflächenaktualisierungen | Nachrichten anzeigen  |
+| Nachrichtenapp --> News API  | Suchanfrage nach Land oder Schlagwort   | - |
+| News API--> Nachrichtenapp | - | Übertragung der Nachrichten  |
+
 
 ### Technischer- oder Verteilungskontext
 
