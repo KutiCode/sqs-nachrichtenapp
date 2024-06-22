@@ -27,7 +27,7 @@ jobs:
         with:
           dockerfile: ./frontend/Dockerfile
 
-  build-test:
+  build-test-backend:
     runs-on: ubuntu-latest
     services:
       redis:
@@ -49,18 +49,28 @@ jobs:
       - name: Verify Java version
         run: java -version
 
+      - name: Build backend
+        run: |
+          cd backend
+          mvn clean install
+
+      - name: Run backend tests
+        run: |
+          cd backend
+          mvn test
+  build-test-frontend:
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '18'
 
-      - name: Build and start Docker containers
-        run: docker-compose up -d --build
-
-      - name: Install dependencies and build React Frontend
+      - name: Install dependencies of frontend
         run: |
           cd frontend
           npm install
+
+      - name : Build React Frontend
           npm run build
 
       - name: Run frontend tests
@@ -74,13 +84,9 @@ jobs:
         run: |
           cd frontend
           npm run test -- --coverage
+          
 
-      - name: Build backend
-        run: |
-          cd backend
-          mvn clean install
-
-  sonarcloud-backend:
+  sonarcloud-backend-analysis:
     needs: build-test
     runs-on: ubuntu-latest
 
@@ -117,7 +123,7 @@ jobs:
           cd backend
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sqs-test_backend -Dsonar.java.coveragePlugin=jacoco
 
-  sonarcloud-frontend:
+  sonarcloud-frontend-analysis:
     needs: build-test
     runs-on: ubuntu-latest
 
