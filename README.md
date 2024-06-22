@@ -23,6 +23,21 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 
 ### Stakeholder
 
+| Rolle              | Kontakt                    | Erwartungshaltung                                  | 
+| ------------------ | -------------------------- | -------------------------------------------------- |
+| Professor          | Beneken, Gerd (gerd.beneken@th-rosenheim.de)                 | Erwartet wird eine funktionierende Software mit erfüllten Qualitätszielen und SQS-Aspekten für eine gute Note |
+| Lehrbeauftragte    | Reimer, Mario-Leander (mario-leander.reimer@th-rosenheim.de) | Erwartet wird eine funktionierende Software mit erfüllten Qualitätszielen und SQS-Aspekten für eine gute Note |
+| Entwickler         | Öktem, Kutay (kutay.oektem@stud.th-rosenheim.de)             | Entwicklung einer funktionierenden Anwendung gemäß den angegebenen Qualitätszielen          |
+| Anwender           |                | Erwartet eine zuverlässige, schnelle und benutzerfreundliche Anwendung zur Suche und Anzeige aktueller Nachrichten |
+| API Anbieter       | https://newsapi.org/                | Verantwortungsvolle und effiziente Nutzung der API gemäß den Vorgaben des Anbieters  |
+
+
+Prüfer	Mario-Leander Reimer (mario-leander.reimer@th-rosenheim.de)	Es wird erwartet, dass das Softwareprogramm und dessen Qualität überzeugend sind, um eine gute Note zu vergeben.
+Prüfer	Gerd Beneken (gerd.beneken@th-rosenheim.de)	Es wird erwartet, dass das Softwareprogramm und dessen Qualität überzeugend sind, um eine gute Note zu vergeben.
+Stundent (Entwickler)	Serap Kaya (serap.kaya@stud.th-rosenheim.de)	Es wird erwartet, dass die Architektur geplant, der Code entwickelt, die Tests geplant und durchgeführt sowie die Dokumentation erstellt wird.
+
+
+
 ## Randbedingungen
 
 ### Technische Randbedingungen
@@ -30,6 +45,8 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 ### Organisatorische Randbedingungen
 
 ## Kontextabgrenzung
+
+
 
 ### Fachlicher Kontext
 
