@@ -18,12 +18,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Lint Backend Dockerfile with Hadolint
-        uses: hadolint/hadolint-action@v2
+        uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: ./backend/Dockerfile
 
       - name: Lint Frontend Dockerfile with Hadolint
-        uses: hadolint/hadolint-action@v2
+        uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: ./frontend/Dockerfile
 
@@ -97,7 +97,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           cd backend
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sqs-test_backend -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sqs-test_backend -Dsonar.organization=sqs-nachrichtenapp -Dsonar.branch.name=main -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
 
   build-test-frontend:
     runs-on: ubuntu-latest
@@ -105,6 +105,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu'
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -136,7 +142,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
+          
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'zulu'
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -154,22 +165,14 @@ jobs:
           cd frontend
           npm install
 
-      - name: Run SonarCloud Scan
+      - name: Run SonarCloud Analysis for Frontend
+        working-directory: frontend
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          cd frontend
-          npx sonar-scanner \
-            -Dsonar.projectKey=sqs-test_frontend \
-            -Dsonar.organization=SQS-Projekt \
-            -Dsonar.sources=src \
-            -Dsonar.tests=src \
-            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-
-
+        run: npx sonar-scanner -Dsonar.branch.name=main -Dsonar.projectKey=sqs-test_frontend -Dsonar.organization=sqs-nachrichtenapp -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+      
+      
   docker-build-push:
     needs: [build-test-backend, sonarcloud-backend-analysis, sonarcloud-frontend-analysis]
     runs-on: ubuntu-latest
@@ -177,7 +180,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+        
+      - name: Prepare lowercase variables
+        run: echo "LOWER_REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+  
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v2
         with:
@@ -187,10 +193,10 @@ jobs:
 
       - name: Build and push backend Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/backend:latest ./backend
-          docker push ghcr.io/${{ github.repository }}/backend:latest
+          docker build -t ghcr.io/${{env.LOWER_REPO_NAME}}/backend:latest ./backend
+          docker push ghcr.io/${{ env.LOWER_REPO_NAME}}/backend:latest
 
       - name: Build and push frontend Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/frontend:latest ./frontend
-          docker push ghcr.io/${{ github.repository }}/frontend:latest
+          docker build -t ghcr.io/${{ env.LOWER_REPO_NAME }}/frontend:latest ./frontend
+          docker push ghcr.io/${{ env.LOWER_REPO_NAME }}/frontend:latest

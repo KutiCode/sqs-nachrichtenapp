@@ -1,17 +1,28 @@
-# Backend Dockerfile
-FROM eclipse-temurin:17-jdk-jammy AS build
+# Verwende ein Basis-Image mit Java
+FROM openjdk:17-jdk-slim
 
+# Setze das Arbeitsverzeichnis
 WORKDIR /app
-COPY .mvn/ .mvn
-COPY mvnw .
-COPY pom.xml .
-COPY src src
 
-RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
+# Kopiere das Maven Build-File und installiere Abhängigkeiten
+COPY pom.xml ./
+COPY mvnw ./
+COPY .mvn .mvn
 
-FROM eclipse-temurin:17-jdk-jammy
-WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
+# Installiere Maven Wrapper und gehe offline
+RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Kopiere den restlichen Code
+COPY src ./src
+
+# Baue das Projekt
+RUN ./mvnw package -DskipTests
+
+# Setze das Arbeitsverzeichnis für die JAR-Ausführung
+WORKDIR /app/target
+
+# Exponiere den Port
+EXPOSE 8080
+
+# Startpunkt des Containers
+CMD ["java", "-jar", "nachrichtenapp-0.0.1-SNAPSHOT.jar"]
