@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-test:
     runs-on: ubuntu-latest
     services:
       redis:
@@ -23,7 +23,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up JDK 17
-        id: setup-java
         uses: actions/setup-java@v3
         with:
           java-version: '17'
@@ -65,13 +64,13 @@ jobs:
           mvn clean install
 
   sonarcloud-backend:
-    needs: build
+    needs: build-test
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -93,22 +92,22 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Build and analyze Spring boot backend
+      - name: Build and analyze Spring Boot backend
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           cd backend
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sqs-test_backend -Dsonar.java.coveragePlugin=jacoco
 
   sonarcloud-frontend:
-    needs: build
+    needs: build-test
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -129,8 +128,33 @@ jobs:
 
       - name: Run SonarCloud Scan
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           cd frontend
           npx sonar-scanner -Dsonar.projectKey=sqs-test_frontend -Dsonar.sources=src -Dsonar.tests=src -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+
+  docker-build-push:
+    needs: [build-test, sonarcloud-backend, sonarcloud-frontend]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push backend Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/backend:latest ./backend
+          docker push ghcr.io/${{ github.repository }}/backend:latest
+
+      - name: Build and push frontend Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/frontend:latest ./frontend
+          docker push ghcr.io/${{ github.repository }}/frontend:latest
