@@ -57,7 +57,7 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 ## Kontextabgrenzung
 
 ### Fachlicher Kontext
-
+![Fachlicher Kontext](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Fachlicher%20Konzept.PNG)
 
 | Kommunikationsbeziehung | Eingabe                        | Ausgabe                                            | 
 | ----------------------- | -------------------------------| -------------------------------------------------- |
