@@ -32,11 +32,21 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 
 ### Technische Randbedingungen
 
+- Software- und Framework-Abhängigkeiten: Die Anwendung benötigt React 18.3.1, Spring Boot 3.3.0, Java 17, Redis 0.7.3 und Maven 3.9.8
+
+- Hardwareanforderung: Ein Laptop oder PC ist erforderlich, um die Anwendung auszuführen.
+
+- Plattformanforderungen: Die Anwendung muss auf macOS, Linux oder Windows lauffähig sein.
+  
+- Entwicklungs- und Deployment-Anforderungen: Für die Versionskontrolle wird GitHub verwendet. Eine CI/CD-Pipeline mit GitHub Actions wird eingerichtet, um automatisiertes Testing und Deployment zu gewährleisten. Zudem wird Docker zur Containerisierung und Verwaltung der Laufzeitumgebungen eingesetzt.
+  
+- Integrationsanforderungen: Für die Integration sind Redis und die Polygon.io API erforderlich.
+
+- Netzwerk- und Kommunikationsanforderungen: Alle externen API-Aufrufe müssen über HTTPS erfolgen.
+
 ### Organisatorische Randbedingungen
 
 ## Kontextabgrenzung
-
-
 
 ### Fachlicher Kontext
 
