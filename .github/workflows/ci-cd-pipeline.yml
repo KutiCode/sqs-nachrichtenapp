@@ -99,11 +99,13 @@ jobs:
           cd backend
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sqs-test_backend -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
 
-
   build-test-frontend:
-
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -122,7 +124,10 @@ jobs:
           CI: true
 
       - name: Build React Frontend
+        run: |
+          cd frontend
           npm run build
+
   sonarcloud-frontend-analysis:
     needs: build-test-frontend
     runs-on: ubuntu-latest
@@ -158,7 +163,7 @@ jobs:
           npx sonar-scanner -Dsonar.projectKey=sqs-test_frontend -Dsonar.sources=src -Dsonar.tests=src -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
 
   docker-build-push:
-    needs: [build-test, sonarcloud-backend, sonarcloud-frontend]
+    needs: [build-test-backend, sonarcloud-backend-analysis, sonarcloud-frontend-analysis]
     runs-on: ubuntu-latest
 
     steps:
