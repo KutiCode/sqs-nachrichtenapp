@@ -129,7 +129,7 @@ jobs:
           npm run build
 
   sonarcloud-frontend-analysis:
-    needs: build-test-frontend
+    needs: build-test
     runs-on: ubuntu-latest
 
     steps:
@@ -160,7 +160,14 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           cd frontend
-          npx sonar-scanner -Dsonar.projectKey=sqs-test_frontend -Dsonar.sources=src -Dsonar.tests=src -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+          npx sonar-scanner \
+            -Dsonar.projectKey=sqs-test_frontend \
+            -Dsonar.organization=<your_organization> \
+            -Dsonar.sources=src \
+            -Dsonar.tests=src \
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
   docker-build-push:
     needs: [build-test-backend, sonarcloud-backend-analysis, sonarcloud-frontend-analysis]
