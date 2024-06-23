@@ -170,7 +170,7 @@ jobs:
           npm install
           
       - name: test frontend with coverage
-        run:
+        run: |
           cd frontend
           npm test
         env:
