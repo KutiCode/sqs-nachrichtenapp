@@ -282,6 +282,12 @@ gen
 
 ## Qualitätsanforderungen
 
+Im Bereich der **Benutzerfreundlichkeit** muss die Anwendung eine intuitive und leicht verständliche Oberfläche bieten, die durch einfache Navigation und Interaktion überzeugt. Die Benutzeroberfläche soll klar strukturiert und übersichtlich gestaltet sein, sodass die Benutzer ohne großen Aufwand mit der Anwendung interagieren können. Zudem sind schnelle Ladezeiten notwendig, um die Benutzererfahrung zu verbessern. Zur Sicherstellung dieser Ziele werden UI-Tests und End-to-End-Tests mit Playwright durchgeführt, um die Funktionsfähigkeit der Benutzeroberfläche zu überprüfen.
+
+Die **Zuverlässigkeit** der Anwendung ist ebenfalls von großer Bedeutung. Die Anwendung soll stabil und fehlerfrei laufen, eine hohe Verfügbarkeit gewährleisten und auch bei unerwarteten Eingaben sowie unter hoher Last fehlerfrei bleiben. Hierbei ist es wichtig, dass die Anwendung verschiedene Arten von Benutzereingaben robust verarbeiten kann, ohne abzustürzen, und dass sie auch bei hoher Benutzeraktivität oder Datenverarbeitung stabil bleibt. Zur Erreichung dieser Ziele werden Integrationstests und Lasttests mit Artillery durchgeführt sowie eine umfangreiche Testabdeckung mit Unit-Tests sichergestellt.
+
+Im Hinblick auf die **Übertragbarkeit** muss die Anwendung flexibel in Bezug auf die Laufzeitumgebung sein und in allen gängigen Browsern einwandfrei funktionieren. Darüber hinaus soll die Anwendung Ressourcen wie Speicher und Prozessor effizient nutzen, um eine hohe Leistung zu gewährleisten, und minimal von externen Diensten abhängig sein, um ihre Zuverlässigkeit und Stabilität zu erhöhen. Zur Umsetzung dieser Ziele werden End-to-End-Tests mit Playwright durchgeführt, Docker-Compose-Dateien für das Starten der Services eingesetzt und Docker zur Plattformunabhängigkeit und Isolierung der Laufzeitumgebungen verwendet.
+
 ### Qualitätsbaum
 
 ### Qualitätsszenarien
