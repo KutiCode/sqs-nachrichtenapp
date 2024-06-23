@@ -289,8 +289,24 @@ Die **Zuverlässigkeit** der Anwendung ist ebenfalls von großer Bedeutung. Die 
 Im Hinblick auf die **Übertragbarkeit** muss die Anwendung flexibel in Bezug auf die Laufzeitumgebung sein und in allen gängigen Browsern einwandfrei funktionieren. Darüber hinaus soll die Anwendung Ressourcen wie Speicher und Prozessor effizient nutzen, um eine hohe Leistung zu gewährleisten, und minimal von externen Diensten abhängig sein, um ihre Zuverlässigkeit und Stabilität zu erhöhen. Zur Umsetzung dieser Ziele werden End-to-End-Tests mit Playwright durchgeführt, Docker-Compose-Dateien für das Starten der Services eingesetzt und Docker zur Plattformunabhängigkeit und Isolierung der Laufzeitumgebungen verwendet.
 
 ### Qualitätsbaum
+![Qualitätsbaum](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Qualit%C3%A4tsbaum.PNG)
 
 ### Qualitätsszenarien
+
+| Attribut              | Szenario                   | Maßnahme                                  | 
+| ------------------ | -------------------------- | -------------------------------------------------- |
+| Usability - Benutzerfreundlichkeit| Nutzungsszenario:Das System präsentiert Nachrichten in einer klaren und leicht verständlichen Weise. | Aufgeräumtes Layout undEinheitliche Datenpräsentation |
+|  | Änderungsszenario: Neue Nutzeranforderungen werden fortlaufend in das Design eingebunden. | Regelmäßige Überprüfung und Anpassung an die Bedürfnisse der Nutzer |
+|  | Nutzungsszenario: Die Benutzer können mühelos ein Land auswählen oder ein Schlagwort eingeben, um die entsprechenden Ergebnisse anzuzeigen. |End-to-End-Tests werden mit Playwrigh und benutzerfreundliche Benutzeroberfläche mit einfacher Navigation.|
+|  | Änderungsszenario: Optimierungen der Benutzeroberfläche werden kontinuierlich vorgenommen.| UI-Tests, Benutzerfeedback einholen und umsetzen, regelmäßige Usability-Tests |
+| Reliability - Zuverlässigkeit | Nutzungsszenario: Das System bleibt auch bei hoher Auslastung stabil und reagiert zügig.| Lasttests mit Artillery |
+|  | Änderungsszenario: Neue Anforderungen erfordern Anpassungen sowie erneute Überprüfungen der Systemstabilität.| Anpassung der Testverfahren |
+|  | Nutzungsszenario: Das System wird umfassend getestet, um die Zuverlässigkeit sicherzustellen. | Integrationstests, End-to-End-Tests, Lasttests, Unit-Tests|
+|  | Das Testkonzept wird regelmäßig aktualisiert, wenn Änderungen im Code vorgenommen werden. | Umfangreiche Testabdeckung |
+| Portability - Übertragbarkeit| Nutzungsszenario: Das System läuft reibungslos in verschiedenen Browsern. | End-to-End-Tests mit Playwright |
+|  |  Änderungsszenario: Neue Browserversionen werden unterstützt und getestet.| Regelmäßige Aktualisierungen und Tests mit Playwright |
+|  | Nutzungsszenario: Das System funktioniert auf verschiedenen Plattformen innerhalb unterschiedlicher Docker-Container.| Einsatz von Docker für die Containerisierung und Verwendung von Docker Compose zur Koordination|
+|  | Änderungsszenario: Neue Containerumgebungen werden unterstützt und geprüft.| Isolierte Laufzeitumgebung |
 
 ## Risiken und technische Schulden
 
