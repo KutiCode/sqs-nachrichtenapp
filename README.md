@@ -260,7 +260,10 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 | News Service | Verarbeitung der Nachrichtenanfragen durch Geschäftslogik |
 | ApiService | Anbindung an die News API|
 | RedisService | Datenmodell für Brauereidaten und Datenbankkommunikation|
+### Whitebox React Frontend
 
+#### Übersichtsdiagramm
+![Frontend-Whitebox](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Frontend-whiteBox.png)
 
 ## Laufzeitsicht
 
