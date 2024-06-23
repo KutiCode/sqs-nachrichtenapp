@@ -9,7 +9,7 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
-[![Reliability Rating]([![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
 
 
 ### Statische Analyse Backend: 
