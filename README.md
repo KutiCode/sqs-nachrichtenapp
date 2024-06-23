@@ -136,11 +136,26 @@ Die Infrastruktur der Anwendung wird mit Docker containerisiert, um die Plattfor
 
 ### Qualitätsanforderungen 
 
-Im Bereich der **Benutzerfreundlichkeit muss die Anwendung eine intuitive und leicht verständliche Oberfläche bieten, die durch einfache Navigation und Interaktion überzeugt. Die Benutzeroberfläche soll klar strukturiert und übersichtlich gestaltet sein, sodass die Benutzer ohne großen Aufwand mit der Anwendung interagieren können. Zudem sind schnelle Ladezeiten notwendig, um die Benutzererfahrung zu verbessern. Zur Sicherstellung dieser Ziele werden UI-Tests und End-to-End-Tests mit Playwright durchgeführt, um die Funktionsfähigkeit der Benutzeroberfläche zu überprüfen.
+Im Bereich der **Benutzerfreundlichkeit** muss die Anwendung eine intuitive und leicht verständliche Oberfläche bieten, die durch einfache Navigation und Interaktion überzeugt. Die Benutzeroberfläche soll klar strukturiert und übersichtlich gestaltet sein, sodass die Benutzer ohne großen Aufwand mit der Anwendung interagieren können. Zudem sind schnelle Ladezeiten notwendig, um die Benutzererfahrung zu verbessern. Zur Sicherstellung dieser Ziele werden UI-Tests und End-to-End-Tests mit Playwright durchgeführt, um die Funktionsfähigkeit der Benutzeroberfläche zu überprüfen.
 
 Die **Zuverlässigkeit** der Anwendung ist ebenfalls von großer Bedeutung. Die Anwendung soll stabil und fehlerfrei laufen, eine hohe Verfügbarkeit gewährleisten und auch bei unerwarteten Eingaben sowie unter hoher Last fehlerfrei bleiben. Hierbei ist es wichtig, dass die Anwendung verschiedene Arten von Benutzereingaben robust verarbeiten kann, ohne abzustürzen, und dass sie auch bei hoher Benutzeraktivität oder Datenverarbeitung stabil bleibt. Zur Erreichung dieser Ziele werden Integrationstests und Lasttests mit Artillery durchgeführt sowie eine umfangreiche Testabdeckung mit Unit-Tests sichergestellt.
 
 Im Hinblick auf die **Übertragbarkeit** muss die Anwendung flexibel in Bezug auf die Laufzeitumgebung sein und in allen gängigen Browsern einwandfrei funktionieren. Darüber hinaus soll die Anwendung Ressourcen wie Speicher und Prozessor effizient nutzen, um eine hohe Leistung zu gewährleisten, und minimal von externen Diensten abhängig sein, um ihre Zuverlässigkeit und Stabilität zu erhöhen. Zur Umsetzung dieser Ziele werden End-to-End-Tests mit Playwright durchgeführt, Docker-Compose-Dateien für das Starten der Services eingesetzt und Docker zur Plattformunabhängigkeit und Isolierung der Laufzeitumgebungen verwendet.
+
+### Organisatorische Entscheidungen
+
+**Verwendung von Docker:**
+Docker wird zur Containerisierung und Verwaltung der Laufzeitumgebungen eingesetzt. Diese Entscheidung ermöglicht es, die Anwendung in isolierten Containern zu entwickeln und bereitzustellen, was die Konsistenz zwischen Entwicklungs-, Test- und Produktionsumgebungen sicherstellt. Docker-Compose wird verwendet, um die verschiedenen Services der Anwendung einfach zu starten und zu verwalten. Diese Vorgehensweise erleichtert die Einrichtung und den Betrieb der gesamten Entwicklungsumgebung und reduziert potenzielle Konflikte zwischen Abhängigkeiten.
+
+**Versionskontrolle mit GitHub:**
+GitHub dient als Plattform für die Versionskontrolle, um eine effiziente Verwaltung des Codes zu ermöglichen. Alle Code-Änderungen werden in einem zentralen Repository verwaltet, was die Nachverfolgbarkeit von Änderungen und die Sicherung der Entwicklungsfortschritte erleichtert. GitHub stellt sicher, dass der Code strukturiert und übersichtlich bleibt und frühere Versionen bei Bedarf leicht wiederhergestellt werden können.
+
+**CI/CD-Pipeline mit GitHub Actions:**
+Zur Automatisierung der Build-, Test- und Deployment-Prozesse wird eine CI/CD-Pipeline mit GitHub Actions eingerichtet. Diese Pipeline führt automatisierte Tests bei jedem Commit durch, um sicherzustellen, dass keine neuen Fehler eingeführt werden. Darüber hinaus wird der Build-Prozess automatisiert, um die Anwendung in Docker-Containern zu packen und bereitzustellen. Diese Automatisierung erhöht die Effizienz und Zuverlässigkeit der Bereitstellungsprozesse.
+
+**Testing-Strategien:**
+Ein strukturierter Ansatz für das Testen der Anwendung wird verfolgt, um die Qualität und Zuverlässigkeit sicherzustellen. UI-Tests und End-to-End-Tests werden mit Playwright durchgeführt, um die Funktionalität der Benutzeroberfläche zu überprüfen. Integrationstests und Lasttests mit Artillery werden eingesetzt, um die Stabilität und Leistung der Anwendung unter verschiedenen Bedingungen zu gewährleisten. Eine umfassende Testabdeckung mit Unit-Tests stellt sicher, dass alle Komponenten der Anwendung robust und fehlerfrei funktionieren.
+
 
 ## Baueinsicht
 
