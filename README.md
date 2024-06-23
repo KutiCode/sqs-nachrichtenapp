@@ -310,4 +310,12 @@ Im Hinblick auf die **Übertragbarkeit** muss die Anwendung flexibel in Bezug au
 
 ## Risiken und technische Schulden
 
+| Risiko/Technische Schuld    | Beschreibung           | Maßnahme zur Risikovermeidung/Risikominimierung/Abbau der technischen Schuld | Priorität                                      |
+| Abhängigkeit von externer API| Die Anwendung ist stark von der externen News API abhängig. Wenn die API ausfällt oder Änderungen an ihrem Interface vornimmt, kann die Anwendung nicht korrekt funktionieren.| Implementierung eines Fallback-Mechanismus, der auf alternative Datenquellen zugreift, sowie regelmäßige Überprüfung der API-Verfügbarkeit und Anpassungen bei Änderungen. | Hoch|
+| Unzureichende Testabdeckung| Nicht alle Codepfade und Funktionen sind ausreichend getestet, was dazu führen kann, dass Fehler oder unerwartete Verhaltensweisen unentdeckt bleiben. | Erhöhung der Testabdeckung durch zusätzliche Unit- und Integrationstests, regelmäßige Code-Reviews und Automatisierung der Tests in der CI/CD-Pipeline. | Mittel |
+| Komplexität der Containerisierung | Die Verwaltung und Orchestrierung mehrerer Docker-Container kann komplex und fehleranfällig sein, was die Wartung und Skalierbarkeit der Anwendung erschwert. | Dokumentation der Containerisierungsprozesse, Schulung der Entwickler im Umgang mit Docker und Docker Compose, sowie regelmäßige Überprüfungen und Optimierungen. | Mittel |
+| Performanceprobleme bei hoher Last| Das System könnte bei hoher Benutzerlast Leistungseinbußen erleiden, was zu längeren Ladezeiten oder sogar Ausfällen führen kann. | Durchführung von Lasttests zur Identifikation von Engpässen, Optimierung der Datenbankabfragen und des Codes, sowie Skalierung der Infrastruktur nach Bedarf.| Hoch |
+| Veraltete Bibliotheken | Verwendete Bibliotheken und Frameworks könnten veralten und Sicherheitslücken enthalten, was die Sicherheit und Stabilität der Anwendung beeinträchtigen kann. | Regelmäßige Updates der verwendeten Bibliotheken und Abhängigkeiten, Überwachung von Sicherheitswarnungen und Durchführung von Sicherheitsaudits | Niedrig|
+| Sicherheitslücken | Die Anwendung könnte Sicherheitslücken aufweisen, die von Angreifern ausgenutzt werden könnten, was zu Datenverlust oder -manipulation führen kann. | Durchführung regelmäßiger Sicherheitsaudits, Implementierung von Sicherheitsmaßnahmen wie Verschlüsselung und Authentifizierung, sowie Schulung der Entwickler in sicheren Programmierpraktiken. | Hoch |	
+
 ## Glossar
