@@ -265,6 +265,17 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 #### Übersichtsdiagramm
 ![Frontend-Whitebox](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Frontend-whiteBox.png)
 
+#### Enthaltene Bausteine
+
+| Name         | Verantwortung                                                                                                                                                                 |
+|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| AppComponent | Kommunikation mit den unterschiedlichen Elementen und korrekte Darstellung dieser. Stellt die Weboberfläche bereit.                                                           |
+| Header       | Stellt die Kopfzeile der Webanwendung zur Verfügung                                                                                                                           |
+| SearchBar    | Komponente für die Eingabe von Schlagwörtern. Kommuniziert mit AppComponent für die übermittlung der Daten an das Backend                                                     |
+| Dropdown     | Stellt verschiedene Länder dem Nutzer zur Verfügung um die Trend Nachrichten auswählen zu können. Kommuniziert mit AppComponent für die Übermittlung der Daten an das Backend |
+| ResultsList  | Stellt die Ergebnisse der Anfrage dar. Kommuniziert für die Richtige Darstellung mit AppComponent.                                                                            |
+| DetailedView | Detaillierte Ansicht der ausgewählten Nachricht aus ResultsList                                                                                                               |
+
 ## Laufzeitsicht
 
 ### Szenario 1: Abruf von Nachrichten durch Auswahl des Landes (Cache-Hit)
