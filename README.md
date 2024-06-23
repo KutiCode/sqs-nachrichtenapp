@@ -170,6 +170,7 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 #### Enthaltene Bausteine
 
 | Name  | Verantwortung                      | 
+| ------------------ | -------------------------- |
 | React Frontend | Bereitstellung der Benutzeroberfläche|
 | Spring Boot Backend | Bereitstellung der API-Endpunkte und Ausführung der Geschäftslogik|
 | Redis Datenbank | Verwaltung und Speicherung der Daten|
@@ -177,6 +178,7 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 
 #### Wichtige Schnittstellen
 | Schnittstelle  | Beschreibung                      | 
+| ------------------ | -------------------------- |
 | Frontend-Backend | Schnittstelle für die Kommunikation zwischen React Frontend und Spring Boot Backend |
 | Backend-Datenbank | Schnittstellte für die Kommunikation zwischen Spring Boot Backend und Redis Datenbank |
 | Backend-Externe API | Schnittstelle für die Kommunikation zwischen Spring Boot Backend und News API|
