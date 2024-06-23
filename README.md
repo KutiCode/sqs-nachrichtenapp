@@ -93,6 +93,8 @@ Das System bezieht Nachrichten von einer externen News API und lädt diese in da
 
 ## Lösungsstrategie
 
+Die Entwurfsstrategie dieses Projekts beruht in wesentlichem Maße auf sorgfältig getroffenen Technologieentscheidungen und durchdachten Systemdesigns. Diese Entscheidungen und Designs wurden speziell auf die spezifischen Anforderungen, die angestrebten Qualitätsziele und die vorgegebenen Rahmenbedingungen abgestimmt, um eine optimale Umsetzung zu gewährleisten. Durch diese gezielte Abstimmung wird sichergestellt, dass das Projekt effizient, zuverlässig und den gestellten Aufgaben entsprechend umgesetzt wird.
+
 ### Technologieentscheidungen
 
 Die Auswahl der Technologien für dieses Projekt wurde sorgfältig getroffen, um eine optimale Leistung, Skalierbarkeit und Benutzerfreundlichkeit zu gewährleisten. Hier sind die wesentlichen Gründe für die gewählten Technologien:
@@ -114,6 +116,23 @@ GitHub wurde für die Versionskontrolle gewählt, um eine effiziente Zusammenarb
 
 **6. News API für externe Nachrichtenquellen:**
 Die News API wurde ausgewählt, um aktuelle Nachrichten von verschiedenen Quellen zu beziehen. Sie bietet eine einfache und konsistente Möglichkeit, auf eine Vielzahl von Nachrichtenquellen zuzugreifen, was die Funktionalität der Anwendung erheblich erweitert und den Benutzern wertvolle Informationen liefert.
+
+### Top-Level-Zerlegung des Systems
+
+**1. Frontend (Benutzeroberfläche):**
+Das Frontend bildet die Benutzerschnittstelle der Anwendung und wird mit React entwickelt. Es umfasst alle visuellen und interaktiven Elemente, die der Benutzer sieht und mit denen er interagiert. Die Hauptaufgaben des Frontends sind die Darstellung der Daten, die Kommunikation mit dem Backend über API-Aufrufe und die Bereitstellung einer benutzerfreundlichen Oberfläche.
+
+**2. Backend (Geschäftslogik und Datenverarbeitung):**
+Das Backend, entwickelt mit Spring Boot, bildet das Herzstück der Anwendung. Es verwaltet die Geschäftslogik, verarbeitet Datenanfragen, kommuniziert mit externen APIs und steuert die Datenbankzugriffe. Das Backend stellt sicher, dass alle Geschäftsprozesse korrekt und effizient ablaufen und die Anfragen des Frontends zuverlässig bedient werden.
+
+**3. Datenbank (Datenmanagement und -speicherung):**
+Die Datenbank, in diesem Fall Redis, dient als temporärer Speicher für die zwischengespeicherten Daten. Sie ermöglicht schnelle Lese- und Schreibzugriffe, um die Leistung der Anwendung zu optimieren. Redis wird verwendet, um häufig angefragte Daten zu speichern und so die Last auf das Backend zu reduzieren.
+
+**4. Externe APIs (Datenquellen):**
+Die externe News API stellt die notwendigen Daten für die Anwendung bereit. Das Backend kommuniziert mit dieser API, um aktuelle Nachrichten abzurufen, die dann verarbeitet und in der Redis-Datenbank zwischengespeichert werden. Diese Daten werden anschließend dem Frontend zur Anzeige bereitgestellt.
+
+**5. Infrastruktur und Deployment:**
+Die Infrastruktur der Anwendung wird mit Docker containerisiert, um die Plattformunabhängigkeit und Konsistenz der Entwicklungs- und Produktionsumgebungen sicherzustellen. GitHub wird für die Versionskontrolle verwendet, während GitHub Actions zur Einrichtung einer CI/CD-Pipeline genutzt wird, die automatisiertes Testing und Deployment ermöglicht.
 
 ## Baueinsicht
 
