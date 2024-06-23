@@ -327,12 +327,112 @@ gen
 
 ### User Experience
 
-## Entwurfsentscheidungen 
+## Architekturentscheidungen 
 
-### Entwurfsentscheidungen 1
+### Technologieentscheidungen
 
-### Entwurfsentscheidungen 2
+Die Auswahl der Technologien für dieses Projekt sind wie folgt:
 
+- **Spring Boot für das Backend:** Spring Boot wurde für das Backend gewählt, da es eine robuste und ausgereifte Plattform für die Entwicklung von Java-Anwendungen bietet. Es ermöglicht die schnelle Erstellung eigenständiger, produktionsreifer Anwendungen mit minimaler Konfiguration. Zudem bietet Spring Boot eine breite Palette an integrierten Funktionen wie Sicherheit, Datenverwaltung und RESTful Webservices, die für die Anforderungen dieses Projekts ideal sind.
+
+
+- **React für das Frontend:** React wurde als Frontend-Framework ausgewählt, weil es eine schnelle und effiziente Entwicklung interaktiver Benutzeroberflächen ermöglicht. Mit seiner komponentenbasierten Architektur und virtuellen DOM-Technologie bietet React eine hervorragende Leistung und eine hervorragende Entwicklererfahrung.
+
+
+- **Redis als Cache-Datenbank:** Redis wurde als Cache-Datenbank implementiert, um die Leistungsfähigkeit der Anwendung zu maximieren. Dank seiner In-Memory-Datenstruktur und extrem schnellen Lese- und Schreiboperationen eignet sich Redis hervorragend für die Zwischenspeicherung häufig abgefragter Daten. Dies reduziert die Latenzzeiten und entlastet die Hauptdatenbank, wodurch die Gesamtleistung der Anwendung verbessert wird.
+
+
+- **Docker für die Containerisierung:** Docker wurde zur Containerisierung und Verwaltung der Laufzeitumgebungen verwendet. Durch die Nutzung von Docker können die Anwendungen und ihre Abhängigkeiten in isolierten Containern gebündelt werden, was die Plattformunabhängigkeit und Konsistenz der Entwicklungs- und Produktionsumgebungen gewährleistet. Docker erleichtert zudem die Bereitstellung und Skalierung der Anwendung erheblich.
+
+
+- **GitHub und GitHub Actions für Versionskontrolle und CI/CD:** GitHub wurde für die Versionskontrolle gewählt, um eine effiziente Zusammenarbeit und Verwaltung des Quellcodes zu ermöglichen. Mit GitHub Actions wird eine CI/CD-Pipeline eingerichtet, die automatisiertes Testing und Deployment ermöglicht. Dies sorgt für eine kontinuierliche Integration und Auslieferung der Software, was die Qualität und Zuverlässigkeit der Anwendung sicherstellt.
+
+
+- **News API für externe Nachrichtenquellen:** Die News API wurde ausgewählt, um aktuelle Nachrichten von verschiedenen Quellen zu beziehen. Sie bietet eine einfache und konsistente Möglichkeit, auf eine Vielzahl von Nachrichtenquellen zuzugreifen, was die Funktionalität der Anwendung erheblich erweitert und den Benutzern wertvolle Informationen liefert.
+
+
+- **Playwright für UI-Tests:** Playwright wurde für die Durchführung von UI-Tests ausgewählt, um die Funktionsfähigkeit der Benutzeroberfläche zu überprüfen. Mit Playwright können automatisierte Tests auf verschiedenen Browsern und Geräten durchgeführt werden, um sicherzustellen, dass die Anwendung benutzerfreundlich und fehlerfrei ist.
+
+
+- **Artillery für Lasttests:** Artillery wird für die Durchführung von Lasttests verwendet, um die Stabilität und Leistung der Anwendung unter verschiedenen Bedingungen zu gewährleisten. Mit Artillery können Tests mit hoher Benutzeraktivität und Datenverarbeitung durchgeführt werden, um sicherzustellen, dass die Anwendung auch bei hoher Last stabil bleibt.
+
+
+- **JUnit für Unit-Tests:** JUnit wird für die Durchführung von Unit-Tests eingesetzt, um sicherzustellen, dass alle Komponenten der Anwendung robust und fehlerfrei funktionieren. Mit JUnit können automatisierte Tests auf einzelne Komponenten des Codes durchgeführt werden, um sicherzustellen, dass sie korrekt arbeiten und die erwarteten Ergebnisse liefern.
+
+
+- **Docker-Compose für die Koordination der Services:** Docker-Compose wird für die Koordination der verschiedenen Services der Anwendung verwendet. Mit Docker-Compose können mehrere Container gleichzeitig gestartet und verwaltet werden, was die Entwicklung und Bereitstellung der Anwendung erleichtert.
+
+
+- **ArchUnit für Architekturtests:** ArchUnit wird für die Durchführung von Architekturtests eingesetzt, um sicherzustellen, dass die Architektur der Anwendung den definierten Regeln und Standards entspricht. Mit ArchUnit können automatisierte Tests auf die Struktur des Codes durchgeführt werden, um sicherzustellen, dass die Architektur konsistent und wartbar bleibt.
+
+
+- **SonarCloud für statische Codeanalyse:** SonarCloud wird für die Durchführung von statischer Codeanalyse verwendet, um potenzielle Probleme und Schwachstellen im Code zu identifizieren. Mit SonarCloud können automatisierte Tests auf den Code durchgeführt werden, um sicherzustellen, dass er den besten Praktiken und Standards entspricht.
+
+### Schichtenmodell
+
+Das Schichtenmodell der Anwendung besteht aus den folgenden Schichten:
+
+- **Präsentationsschicht (Frontend):** Die Präsentationsschicht dieser Anwendung umfasst ein React Frontend welches über REST-APIs mit dem Backend kommuniziert. Die Präsentationsschicht ist für die Darstellung der Benutzeroberfläche und die Interaktion mit dem Benutzer verantwortlich.
+
+
+- Geschäftslogikschicht (Backend): Die Geschäftslogikschicht besteht aus einem Spring Boot Backend, das die API-Endpunkte bereitstellt und die Geschäftslogik der Anwendung implementiert. Das Backend verarbeitet die Anfragen des Frontends, kommuniziert mit der Datenbank und der externen API und steuert die Datenverarbeitung.
+
+
+- Datenzugriffsschicht (Datenbank): Die Datenzugriffsschicht umfasst eine Redis-Datenbank, die als Cache für die zwischengespeicherten Daten dient. Die Datenbank verwaltet und speichert die Daten der Anwendung und ermöglicht schnelle Lese- und Schreibzugriffe.
+
+
+- Inegrationsschicht (Externe API): Die Integrationsschicht besteht aus der News API, die als externe Datenquelle für Nachrichten dient. Das Backend kommuniziert mit der News API, um aktuelle Nachrichten abzurufen, die dann verarbeitet und in der Redis-Datenbank zwischengespeichert werden.
+
+### Entwicklungsprozess
+
+Der Entwicklungsprozess dieser Anwendung wurde sorgfältig geplant und strukturiert, um eine effiziente und zuverlässige Umsetzung zu gewährleisten. Der Prozess umfasst die folgenden Schritte:
+
+1. Backend-Entwicklung: Die Entwicklung des Spring Boot-Backends erfolgt in mehreren Schritten. Zunächst werden die API-Endpunkte definiert und implementiert, um die Kommunikation mit dem Frontend zu ermöglichen. Anschließend wird die Geschäftslogik der Anwendung implementiert, um die Datenverarbeitung und -verwaltung sicherzustellen. Die Integration mit der Redis-Datenbank und der News API wird ebenfalls durchgeführt, um die Datenverarbeitung zu optimieren. Es werden umfangreiche Tests durchgeführt, um die Funktionalität und Zuverlässigkeit des Backends sicherzustellen. Eine Robuste Entwicklungsumgebung wird eingerichtet, um die Entwicklung und den Testprozess zu erleichtern.
+
+2. Frontend-Entwicklung: Das Frontend wurde mithilfe von React erstellt. Die Benutzeroberfläche wird entwickelt, um die Anzeige der Nachrichten und die Interaktion mit dem Benutzer zu ermöglichen. Die Kommunikation mit dem Backend erfolgt über REST-APIs, um die Datenabfrage und -anzeige zu steuern. Die Benutzeroberfläche wird benutzerfreundlich und intuitiv gestaltet, um eine optimale Benutzererfahrung zu gewährleisten. Umfangreiche Tests werden durchgeführt, um die Funktionalität und Benutzerfreundlichkeit des Frontends sicherzustellen.
+
+3. API-Integration: Die Integration mit der News API erfolgt, um aktuelle Nachrichten von verschiedenen Quellen abzurufen. Das Backend kommuniziert mit der News API, um die Datenabfrage und -verarbeitung zu steuern. Die Daten werden verarbeitet und in der Redis-Datenbank zwischengespeichert, um die Leistung der Anwendung zu optimieren. Die Integration wird sorgfältig geplant und durchgeführt, um eine reibungslose Datenübertragung und -verarbeitung sicherzustellen.
+
+4. Testen: Umfangreiche Tests werden durchgeführt, um die Funktionalität, Zuverlässigkeit und Leistung der Anwendung sicherzustellen. UI-Tests und End-to-End-Tests mit Playwright werden durchgeführt, um die Benutzeroberfläche zu überprüfen. Integrationstests und Lasttests mit Artillery werden eingesetzt, um die Stabilität und Leistung der Anwendung zu gewährleisten. Eine umfassende Testabdeckung mit Unit-Tests wird sichergestellt, um alle Komponenten der Anwendung zu überprüfen.
+
+5. CI/CD-Pipeline: Eine CI/CD-Pipeline mit GitHub Actions wird eingerichtet, um automatisierte Tests und Deployment-Prozesse zu ermöglichen. Die Pipeline führt automatisierte Tests bei jedem Commit durch, um sicherzustellen, dass keine neuen Fehler eingeführt werden. Der Build-Prozess wird automatisiert, um die Anwendung in Docker-Containern zu packen und bereitzustellen. Diese Automatisierung erhöht die Effizienz und Zuverlässigkeit der Bereitstellungsprozesse.
+
+### Technologische Eigenschaften dieser Anwendung
+
+**Backend** 
+
+| Begriff     | Beschreibung |
+|-------------|--------------|
+| Technologie | Version      |
+| Java        | 17           |
+| Spring Boot | 3.3.0        |
+| Maven       | 3.9.8        |
+
+**Frontend**
+
+| Begriff     | Beschreibung |
+|-------------|--------------|
+| Technologie | Version      |
+| React       | 18.3.1       |
+| Node        | 18           |
+
+**Datenbank**
+
+| Begriff     | Beschreibung |
+|-------------|--------------|
+| Technologie | Version      |
+| Redis       | 0.7.3        |
+
+
+**Tests**
+
+| Begriff     | Beschreibung |
+|-------------|--------------|
+| Technologie | Version      |
+| ArchUnit    | 0.22.0       |
+| Playwright  | latest       |
+| Artillery   | latest       |
+| JUnit       | 5.8.1        |
 ## Qualitätsanforderungen
 
 Im Bereich der **Benutzerfreundlichkeit** muss die Anwendung eine intuitive und leicht verständliche Oberfläche bieten, die durch einfache Navigation und Interaktion überzeugt. Die Benutzeroberfläche soll klar strukturiert und übersichtlich gestaltet sein, sodass die Benutzer ohne großen Aufwand mit der Anwendung interagieren können. Zudem sind schnelle Ladezeiten notwendig, um die Benutzererfahrung zu verbessern. Zur Sicherstellung dieser Ziele werden UI-Tests und End-to-End-Tests mit Playwright durchgeführt, um die Funktionsfähigkeit der Benutzeroberfläche zu überprüfen.
