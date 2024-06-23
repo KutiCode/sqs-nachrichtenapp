@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('sindAlleElementeSichtbarTest', async ({ page }) => {
-    await page.goto('http://localhost:3000/');
+    await page.goto('http://localhost:80/');
     await expect(page.getByText('Der Nachrichten Portal deines VertrauensBleibe immer up-to-date mit den')).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Der Nachrichten Portal deines' })).toBeVisible();
     await expect(page.getByText('Bleibe immer up-to-date mit')).toBeVisible();

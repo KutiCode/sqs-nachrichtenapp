@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('trendNewsTest', async ({ page }) => {
-    await page.goto('http://localhost:3000/');
+    await page.goto('http://localhost:80/');
     await page.getByRole('button', { name: 'Go!' }).first().click();
     await expect(page.locator('div').filter({ hasText: 'Top 10 Ergebnisse deiner' }).nth(3)).toBeVisible();
     await page.getByRole('combobox').selectOption('us');
