@@ -226,7 +226,7 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 ## Laufzeitsicht
 
 ### Szenario 1: Abruf von Nachrichten durch Auswahl des Landes (Cache-Hit)
-
+#### Ablaufbeschreibung
 1. **Benutzeranfrage im Frontend:** Auf der React basierten Webanwendung navigiert der Benutzer und wählt ein Land aus, um Nachrichten abzurufen.
 2. **Anfrage an das Backend:** Das Frontend übermittelt eine HTTP GET-Anfrage an das Spring Boot-Backend mit dem Endpunkt /news/{land}/{datum}.
 3. **Überprüfung des Caches im Backend:** Das Backend kontrolliert, ob die Nachrichten für das ausgewählte Land bereits im Cache (Redis-Datenbank) gespeichert sind.
@@ -236,7 +236,7 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 ![Laufzeitdiagramm 1](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Laufdiagramm%201.PNG)
 
 ### Szenario 2: Abruf von Nachrichten durch Suche nach einem Schlagwort (Cache-Hit)
-
+#### Ablaufbeschreibung
 1. **Benutzeranfrage im Frontend:** Auf der React basierten Webanwendung navigiert der Benutzer und gibt ein Schlagwort ein, um Nachrichten abzurufen.
 2. **Anfrage an das Backend:** Das Frontend übermittelt eine HTTP GET-Anfrage an das Spring Boot-Backend mit dem Endpunkt /news/search/{schlagwort}.
 3. **Überprüfung des Caches im Backend:** Das Backend kontrolliert, ob die Nachrichten für das ausgewählte Land bereits im Cache (Redis-Datenbank) gespeichert sind.
@@ -245,6 +245,19 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 6. **Anzeige der Daten:** Das Frontend präsentiert die empfangenen Nachrichten dem Benutzer.
 
 ![Laufzeitdiagramm 2](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Laufzeitdiagramm%202.PNG)
+
+### Szenario 3: Abruf von Nachrichten (Cache-Miss)
+#### Ablaufbeschreibung
+1. **Benutzeranfrage im Frontend:** Auf der React basierten Webanwendung navigiert der Benutzer und wählt ein Land aus, um Nachrichten abzurufen.
+2. **Anfrage an das Backend:** Das Frontend übermittelt eine HTTP GET-Anfrage an das Spring Boot-Backend mit dem Endpunkt /news/{land}/{datum}.
+3. **Überprüfung des Caches im Backend:** Das Backend kontrolliert, ob die Nachrichten für das ausgewählte Land bereits im Cache (Redis-Datenbank) gespeichert sind.
+4. **Cache Miss:** Sind die Informationen nicht im Cache vorhanden, wird eine Anfrage an die externe API der News API gesendet.
+5. Anfrage an die News API: Das Backend stellt eine HTTP GET-Anfrage an die API der News API, um Nachrichten für das ausgewählte Land abzurufen.
+6. **Empfang und Speicherung der Daten:** Die News API liefert die Daten im JSON-Format zurück, und das Backend speichert diese im Cache (Redis-Datenbank).
+7. **Antwort an das Frontend:** Das Backend übermittelt die Nachrichten an das Frontend.
+8. **Anzeige der Daten:** Das Frontend präsentiert die empfangenen Nachrichten dem Benutzer.
+   
+![Laufzeitdiagramm 3](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Laufzeitdiagramm%203.PNG)
 
 ## Verteilungssicht
 ### Infrastruktur Ebene 1
