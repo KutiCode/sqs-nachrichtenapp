@@ -9,12 +9,6 @@ module.exports = {
     },
      webServer: [
     {
-      command: `cd ${path.resolve(__dirname, '../../backend')} && mvn spring-boot:run`,
-      url: 'http://localhost:8080',
-      timeout: 500 * 1000,
-      reuseExistingServer: !process.env.CI,
-    },
-    {
       command: `cd ${path.resolve(__dirname, '../../frontend')} && npm start`,
       url: 'http://localhost:3000',
       timeout: 500 * 1000,

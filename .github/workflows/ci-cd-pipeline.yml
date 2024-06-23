@@ -260,5 +260,4 @@ jobs:
       - name: Run Playwright Tests
         run: |
           cd tests
-          cd e2e
           npx playwright test --config playwright.config.js
