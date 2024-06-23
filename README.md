@@ -225,7 +225,15 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 
 ## Laufzeitsicht
 
-### Laufzeitszenario 1
+### Szenario 1: Abruf von Nachrichten durch Auswahl des Landes (Cache-Hit)
+
+1. **Benutzeranfrage im Frontend:** Auf der React basierten Webanwendung navigiert der Benutzer und wählt ein Land aus, um Nachrichten abzurufen.
+2. **Anfrage an das Backend:** Das Frontend übermittelt eine HTTP GET-Anfrage an das Spring Boot-Backend mit dem Endpunkt /news/{land}/{datum}.
+3. **Überprüfung des Caches im Backend:** Das Backend kontrolliert, ob die Nachrichten für das ausgewählte Land bereits im Cache (Redis-Datenbank) gespeichert sind.
+4. **Cache-Hit:** Sind die Informationen im Cache vorhanden, werden sie von dort an das Backend übermittelt.
+5. **Antwort an das Frontend:** Das Backend leitet die Nachrichten an das Frontend weiter.
+6. **Anzeige der Daten:** Das Frontend präsentiert die empfangenen Nachrichten dem Benutzer.
+![Laufzeitdiagramm 1](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Laufdiagramm%201.PNG)
 
 ### Laufzeiszenario 2 
 
