@@ -1,6 +1,29 @@
 # Nachrichtenapp
 
+
+### Statische Analyse Frontend: 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_frontend&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=sqs-test_frontend)
+
+
+### Statische Analyse Backend: 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sqs-test_backend)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_backend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=sqs-test_backend)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_backend&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=sqs-test_backend)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_backend&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=sqs-test_backend)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_backend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=sqs-test_backend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_backend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=sqs-test_backend)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_backend&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=sqs-test_backend)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_backend&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=sqs-test_backend)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sqs-test_backend&metric=coverage)](https://sonarcloud.io/summary/new_code?id=sqs-test_backend)
+
 ## Einführung und Ziele
+
 
 Die Zielsetzung der Nachrichten-App ist es, die wichtigsten aktuellen Schlagzeilen aus verschiedenen Ländern abzurufen und anzuzeigen. Benutzer können entweder die Top 10 Nachrichten eines ausgewählten Landes sehen oder gezielt nach Nachrichten zu einem bestimmten Thema suchen. Für jede Nachricht wird ein Link bereitgestellt, der direkt zur Originalquelle führt, um den vollständigen Artikel zu lesen. Die Anwendung verwendet React für das Frontend, Java Spring Boot für das Backend und Redis als Cache-Datenbank, um die Effizienz der Anfragen zu erhöhen. Die erforderlichen Nachrichteninformationen werden von der News API (https://newsapi.org/) abgerufen und in Redis zwischengespeichert, um bei wiederholten Anfragen schneller darauf zugreifen zu können. Die Suche und Anzeige der Nachrichten erfolgt über eine benutzerfreundliche Weboberfläche, die eine schnelle und intuitive Nutzung ermöglicht.
 
@@ -377,6 +400,16 @@ Die Images für das Front- und Backend werden aus der GitHub-Registry des Projek
 ## Querschnittliche Konzept
 ### Backend UML-Klassendiagramm
 ![Klassendiagramm](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/klassendiagramm.png)
+
+### Github Actions CI/CD Pipeline
+[GitHub Actions Workflow](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/.github/workflows/ci-cd-pipeline.yml)
+
+### Artillery Lasttest
+[Artillery Lasttest](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/artillery/artillery.yml)
+
+### Playwright End-to-End-Tests
+
+[Playwright End-to-End-Tests](https://github.com/KutiCode/sqs-nachrichtenapp/tree/main/tests/tests)
 
 
 ## Architekturentscheidungen 
