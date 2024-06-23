@@ -172,7 +172,7 @@ jobs:
       - name: test frontend with coverage
         run:
           cd frontend
-          npm test --coverage
+          npm test
         env:
             CI: true
             
