@@ -315,8 +315,64 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 ## Verteilungsschicht
 
 ### Infrastruktur
+![Infrastrukturdiagramm](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/infrastruktur.png)
+Begründung: 
+In der Nachrichtenapp wurde die Archtitektur bewusst unterteilt und aufgeteilt. Das Frontend und Backend sind voneinander getrennt und kommunizieren über eine API miteinander. Das Frontend ist für die Darstellung der Nachrichten und die Interaktion mit dem Nutzer zuständig. Das Backend ist für die Verarbeitung der Anfragen und die Kommunikation mit der Datenbank und der externen API zuständig. Die Datenbank speichert die Nachrichten und dient als Zwischenspeicher. Die externe API liefert die Nachrichten, die nicht im Cache vorhanden sind. Durch diese Aufteilung wird eine klare Trennung der Verantwortlichkeiten und eine effiziente Datenverarbeitung gewährleistet.
+Durch die verwendung von React und Spring Boot wird eine hohe Flexibilität und Skalierbarkeit erreicht. Die Verwendung von Redis als Cache-Datenbank ermöglicht eine schnelle und effiziente Datenverarbeitung, während die externe News API eine zuverlässige und umfassende Datenquelle für aktuelle Nachrichten bereitstellt. Die Containerisierung mit Docker und die CI/CD-Pipeline mit GitHub Actions erleichtern die Entwicklung und Bereitstellung der Anwendung erheblich und sorgen für eine hohe Qualität und Zuverlässigkeit.
 
-### Infrastruktur Ebene 2
+- Skalierbarkeit: Die Anwendung kann bei Bedarf horizontal skaliert werden, um eine hohe Benutzeraktivität und Datenverarbeitung zu bewältigen. Durch die Containerisierung mit Docker und die Verwendung von Spring Boot und React wird eine hohe Flexibilität und Skalierbarkeit erreicht.
+
+
+- Portabilität: Die Anwendung ist plattformunabhängig und kann auf verschiedenen Betriebssystemen und Umgebungen ausgeführt werden. Durch die Verwendung von Docker und GitHub Actions wird eine konsistente Entwicklungsumgebung und Bereit
+
+
+- Zuverlässigkeit: Die Anwendung ist stabil und fehlerfrei und bleibt auch bei unerwarteten Eingaben oder hoher Last zuverlässig. Durch die umfangreichen Tests und die kontinuierliche Integration und Auslieferung wird eine hohe Qualität und Zuverlässigkeit der Anwendung sichergestellt.
+
+
+- Isolation: Die Anwendung ist in isolierten Containern gebündelt, um die Abhängigkeiten zu verwalten und Konflikte zu vermeiden. Durch die Verwendung von Docker und GitHub Actions wird eine klare Trennung der Entwicklungs- und Produktionsumgebungen gewährleistet.
+
+### Docker-Compose-Datei
+
+In diesem Projekt genutzte Docker-Compose-Datei: [Docker-Compose-File]()
+
+Die Images für das Front- und Backend werden aus der GitHub-Registry des Projektes gezogen.
+
+<table>
+  <tr>
+    <td>
+      <pre>
++-----------------------+
+|         db            |
+|   postgres:14         |
+|   Port: 5432          |
+|   Volumes:            |
+|   postgres_data       |
++-----------------------+
+      </pre>
+    </td>
+    <td>
+      <pre>
++-----------------------+
+|       backend         |
+|     sqs_backend       |
+|    Ports: 8080        |
+|    Depends on: db     |
++-----------------------+
+      </pre>
+    </td>
+    <td>
+      <pre>
++-----------------------+
+|       frontend        |
+|     sqs_frontend      |
+|    Port: 4200         |
+|    Depends on: backend|
++-----------------------+
+      </pre>
+    </td>
+  </tr>
+</table>
+
 
 ## Querschnittliche Konzept
 
