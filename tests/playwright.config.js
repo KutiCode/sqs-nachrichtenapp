@@ -7,22 +7,18 @@ module.exports = {
         headless: true,
         baseURL: 'http://localhost:3000',
     },
-    webServer: [
-        {
-            command: `cd '../backend' && mvn spring-boot:run`,
-            url: 'http://localhost:8080',
-            timeout: 500 * 1000,
-            reuseExistingServer: !process.env.CI,
-            env: {
-                JAVA_HOME: process.env.JAVA_HOME,
-                MAVEN_HOME: process.env.MAVEN_HOME
-            }
-        },
-        {
-            command: `cd ../frontend' && npm start`,
-            url: 'http://localhost:3000',
-            timeout: 500 * 1000,
-            reuseExistingServer: !process.env.CI,
-        },
-    ],
+     webServer: [
+    {
+      command: `cd ${path.resolve(__dirname, '../../backend')} && mvn spring-boot:run`,
+      url: 'http://localhost:8080',
+      timeout: 500 * 1000,
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: `cd ${path.resolve(__dirname, '../../frontend')} && npm start`,
+      url: 'http://localhost:3000',
+      timeout: 500 * 1000,
+      reuseExistingServer: !process.env.CI,
+    },
+  ],
 };
