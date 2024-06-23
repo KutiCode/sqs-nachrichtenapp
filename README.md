@@ -411,7 +411,10 @@ Die Images für das Front- und Backend werden aus der GitHub-Registry des Projek
 
 [Playwright End-to-End-Tests](https://github.com/KutiCode/sqs-nachrichtenapp/tree/main/tests/tests)
 
+### Sonarcloud-Report
+[Sonarcloud-Report-Backend](https://sonarcloud.io/project/overview?id=sqs-test_backend)
 
+[Sonarcloud-Report-Frontend](https://sonarcloud.io/project/overview?id=sqs-test_frontend)
 ## Architekturentscheidungen 
 
 ### Technologieentscheidungen
