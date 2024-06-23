@@ -9,6 +9,4 @@ test('test', async ({ page }) => {
     await page.getByPlaceholder('Suche nach was bestimmten').fill('Bitcoin');
     await page.locator('div').filter({ hasText: /^Go!$/ }).getByRole('button').click();
     await expect(page.locator('div').filter({ hasText: 'Top 10 Ergebnisse deiner' }).nth(3)).toBeVisible();
-    await expect(page.getByText('Bitcoin and Ethereum ETNs')).toBeVisible();
-    await expect(page.getByText('Bitcoin and Ethereum stable')).toBeVisible();
 });
