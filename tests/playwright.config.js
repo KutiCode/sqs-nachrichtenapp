@@ -9,7 +9,7 @@ module.exports = {
     },
      webServer: [
     {
-      command: `cd ${path.resolve(__dirname, '../../frontend')} && npm start`,
+      command: `cd .. && cd frontend && npm start`,
       url: 'http://localhost:3000',
       timeout: 500 * 1000,
       reuseExistingServer: !process.env.CI,
