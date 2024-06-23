@@ -2,7 +2,6 @@ package com.sqs.project.nachrichtenapp.controller;
 
 import com.sqs.project.nachrichtenapp.model.NewsResponse;
 import com.sqs.project.nachrichtenapp.service.NewsService;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

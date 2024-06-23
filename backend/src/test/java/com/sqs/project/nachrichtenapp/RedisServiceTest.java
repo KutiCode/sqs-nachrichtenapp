@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class RedisServiceTest {
@@ -40,7 +39,7 @@ public class RedisServiceTest {
     }
 
     @Test
-    public void testSaveNewsData() throws JsonProcessingException {
+    void testSaveNewsData() throws JsonProcessingException {
         NewsResponse mockResponse = new NewsResponse();
         mockResponse.setStatus("ok");
         mockResponse.setTotalResults(1);
@@ -54,7 +53,7 @@ public class RedisServiceTest {
     }
 
     @Test
-    public void testGetNewsData() throws JsonProcessingException {
+    void testGetNewsData() throws JsonProcessingException {
         NewsResponse mockResponse = new NewsResponse();
         mockResponse.setStatus("ok");
         mockResponse.setTotalResults(1);
@@ -71,7 +70,7 @@ public class RedisServiceTest {
     }
 
     @Test
-    public void testGetNewsDataNotFound() throws JsonProcessingException {
+    void testGetNewsDataNotFound() throws JsonProcessingException {
         when(valueOperations.get("testKey")).thenReturn(null);
 
         NewsResponse response = redisService.getNewsData("testKey");

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 
-public class ArchitectureTest {
+class ArchitectureTest {
 
     private final JavaClasses importedClasses = new ClassFileImporter().importPackages("com.sqs.project.nachrichtenapp");
 

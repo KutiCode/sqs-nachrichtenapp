@@ -18,7 +18,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-public class ApiServiceTest {
+class ApiServiceTest {
 
     @InjectMocks
     private ApiService apiService;
@@ -34,7 +34,7 @@ public class ApiServiceTest {
     }
 
     @Test
-    public void testFetchNewsFromApi() throws IOException {
+    void testFetchNewsFromApi() throws IOException {
         String mockResponse = "{\"status\":\"ok\",\"totalResults\":1,\"articles\":[{\"title\":\"Test Title\",\"description\":\"Test Description\"}]}";
         when(restTemplate.getForObject(anyString(), eq(String.class))).thenReturn(mockResponse);
 
@@ -48,7 +48,7 @@ public class ApiServiceTest {
         assertEquals("Test Description", response.getArticles().get(0).getDescription());
     }
     @Test
-    public void testSpecificNewsFromApi() throws IOException {
+    void testSpecificNewsFromApi() throws IOException {
         String mockResponse = "{\"status\":\"ok\",\"totalResults\":1,\"articles\":[{\"title\":\"Test Title\",\"description\":\"Test Description\"}]}";
         when(restTemplate.getForObject(anyString(), eq(String.class))).thenReturn(mockResponse);
 

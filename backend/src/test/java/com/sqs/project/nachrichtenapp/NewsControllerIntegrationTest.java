@@ -10,17 +10,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import java.io.IOException;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest(classes = NachrichtenappApplication.class)
 @AutoConfigureMockMvc
-public class NewsControllerIntegrationTest {
+class NewsControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -29,7 +25,7 @@ public class NewsControllerIntegrationTest {
     private NewsService newsService;
 
     @Test
-    public void testGetTrendNews() throws Exception {
+    void testGetTrendNews() throws Exception {
         NewsResponse mockResponse = new NewsResponse();
         mockResponse.setStatus("ok");
         mockResponse.setTotalResults(1);
@@ -43,7 +39,7 @@ public class NewsControllerIntegrationTest {
     }
 
     @Test
-    public void testSearchForNews() throws Exception {
+    void testSearchForNews() throws Exception {
         NewsResponse mockResponse = new NewsResponse();
         mockResponse.setStatus("ok");
         mockResponse.setTotalResults(1);

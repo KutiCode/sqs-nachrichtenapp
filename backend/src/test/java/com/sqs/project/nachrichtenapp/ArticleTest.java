@@ -8,7 +8,7 @@ import com.sqs.project.nachrichtenapp.model.Source;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ArticleTest {
+class ArticleTest {
 
     private Article article;
 

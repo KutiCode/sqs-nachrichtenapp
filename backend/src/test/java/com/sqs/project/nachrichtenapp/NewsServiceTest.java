@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-public class NewsServiceTest {
+class NewsServiceTest {
 
     @Mock
     private ApiService apiService;
@@ -34,7 +34,7 @@ public class NewsServiceTest {
     }
 
     @Test
-    public void testFetchNews() throws IOException {
+    void testFetchNews() throws IOException {
         NewsResponse mockResponse = new NewsResponse();
         mockResponse.setStatus("ok");
         mockResponse.setTotalResults(1);
@@ -53,7 +53,7 @@ public class NewsServiceTest {
     }
 
     @Test
-    public void testFetchNewsByKeyword() throws IOException {
+    void testFetchNewsByKeyword() throws IOException {
         NewsResponse mockResponse = new NewsResponse();
         mockResponse.setStatus("ok");
         mockResponse.setTotalResults(1);
