@@ -57,10 +57,11 @@ jobs:
           cd backend
           mvn clean install
 
-      - name: Run backend tests
+      - name: Run backend tests and generate coverage report
         run: |
           cd backend
           mvn test
+          mvn jacoco:report
 
       - name: Build backend package with Maven
         run: mvn -B package --file backend/pom.xml
