@@ -156,12 +156,52 @@ Zur Automatisierung der Build-, Test- und Deployment-Prozesse wird eine CI/CD-Pi
 **Testing-Strategien:**
 Ein strukturierter Ansatz für das Testen der Anwendung wird verfolgt, um die Qualität und Zuverlässigkeit sicherzustellen. UI-Tests und End-to-End-Tests werden mit Playwright durchgeführt, um die Funktionalität der Benutzeroberfläche zu überprüfen. Integrationstests und Lasttests mit Artillery werden eingesetzt, um die Stabilität und Leistung der Anwendung unter verschiedenen Bedingungen zu gewährleisten. Eine umfassende Testabdeckung mit Unit-Tests stellt sicher, dass alle Komponenten der Anwendung robust und fehlerfrei funktionieren.
 
-
 ## Baueinsicht
 
 ### Whitebox Gesamtsystem
 
 #### Übersichtsdiagramm
+
+![Übersichtsdiagramm](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/%C3%9Cbersichtsdiagramm.PNG)
+
+**Begründung:**
+Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinzipien der Modularisierung und der klaren Aufgabenverteilung. Dies erhöht die Wartbarkeit, erleichtert die Erweiterbarkeit und fördert eine bessere Skalierbarkeit des Systems.
+
+#### Enthaltene Bausteine
+
+| Name  | Verantwortung                      | 
+| React Frontend | Bereitstellung der Benutzeroberfläche|
+| Spring Boot Backend | Bereitstellung der API-Endpunkte und Ausführung der Geschäftslogik|
+| Redis Datenbank | Verwaltung und Speicherung der Daten|
+| News API | Externe Datenquelle für Nachrichten|
+
+#### Wichtige Schnittstellen
+| Schnittstelle  | Beschreibung                      | 
+| Frontend-Backend | Schnittstelle für die Kommunikation zwischen React Frontend und Spring Boot Backend |
+| Backend-Datenbank | Schnittstellte für die Kommunikation zwischen Spring Boot Backend und Redis Datenbank |
+| Backend-Externe API | Schnittstelle für die Kommunikation zwischen Spring Boot Backend und News API|
+
+### React Frontend
+
+**Zweck/Verantwortung:** Das React-Frontend bietet die Benutzeroberfläche, über die Anwender Nachrichten suchen und Informationen anzeigen können. 
+**Schnittstelle:** 
+
+### Spring Boot Backend
+
+**Zweck/Verantwortung:** Das Spring Boot Backend stellt API-Endpunkte bereit und verarbeitet die Geschäftslogik, sodass das Frontend und externe Systeme auf die Anwendung zugreifen können.
+
+**Schnittstelle:**
+
+### Redis Datenbank
+
+**Zweck/Verantwortung:** Die Redis-Datenbank verwaltet und speichert alle benötigten Daten der Anwendung, einschließlich der gecachten Nachrichten.
+**Schnittstelle:**
+
+### News API
+
+**Zweck/Verantwortung:** Das Backend verwendet die News API als externe Quelle für Nachrichten, um Daten abzurufen, die nicht im lokalen Cache vorhanden sind.
+
+**Schnittstelle:**
 
 ### Ebene 2
 
