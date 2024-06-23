@@ -90,8 +90,47 @@ Das System bezieht Nachrichten von einer externen News API und lädt diese in da
 | RedisService --> NewsService |  Datenkonvertierung |  Übertragung der Nachrichten |
 | NewsService --> NewsController | Service Response  |  Übertragung der Nachrichten |
 | NewsController --> ReactFrontend | HTTP Response  | Aktualisierung der Benutzeroberfläche |
+### Schnittstelle zum Backend
+In der vorliegenden Anwendung bietet die Klasse `NewsController` die Schnittstelle zum Backend. Sie stellt die API-Endpunkte bereit, über die das Frontend auf die Nachrichten zugreifen kann. Die Klasse `NewsService` verarbeitet die Anfragen und steuert die Geschäftslogik, während die Klasse `ApiService` die Kommunikation mit der externen News API übernimmt. Die Klasse `RedisService` verwaltet die Datenbankkommunikation und speichert die abgerufenen Nachrichten in der Redis-Datenbank. Durch diese Struktur wird eine klare Trennung der Verantwortlichkeiten und eine effiziente Datenverarbeitung gewährleistet.
 
-## Lösungsstrategie
+Die Schnittstellen die der `NewsController` bereitstellt sind:
+- `GET /news/{land}/{datum}`: Abrufen der Top-Nachrichten eines bestimmten Landes für ein bestimmtes Datum.
+- `GET /news/search/{schlagwort}`: Suche nach Nachrichten zu einem bestimmten Schlagwort.
+
+Die unterschiedlichen Parameter bei den beiden Schnittstellen sind:
+- `{land}`: Das Land, für das die Nachrichten abgerufen werden sollen. Zum Beispiel: `de` für Deutschland, `us` für die USA.
+- `{datum}`: Das Datum, für das die Nachrichten abgerufen werden sollen. Zum Beispiel: `2024-06-01`.
+- `{schlagwort}`: Das Schlagwort, nach dem die Nachrichten gesucht werden sollen. Zum Beispiel: `Corona`.
+
+
+Die Schnittstell gibt bestimmte Responses zurück wenn der Nutzer eine Anfrage stellt:
+- `200 OK`: Die Anfrage war erfolgreich und die Daten wurden gefunden.
+- `500 Internal Server Error`: Ein interner Serverfehler ist aufgetreten und die Anfrage konnte nicht bearbeitet werden.
+
+Die externe NewsAPI besitzt sehr viele Nachrichten zu allen möglichen Themen und Ländern. Aus diesem Grund ist die möglichkeit das der Nutzer eine Fehleingabe macht sehr gering. Außerdem wurde die Anwendung so entwickelt das sie auch bei einer Fehleingabe des Nutzers eine Fehlermeldung zurückgibt und der Nutzer informiert wird. Es wurde bewusst eine sehr benutzerfreundliche Oberfläche entwickelt um die Wahrscheinlichkeit einer Fehleingabe zu minimieren.
+Deshalb bedeutet in diesem Fall ein `500 Internal Server Error` das ein interner Serverfehler aufgetreten oder die externe API keine Nachrichten zu diesem Land oder Schlagwort gefunden hat. Sollte eine solche Rückmeldung erfolgen, so sieht der Nutzer das ihm keine Nachrichten angezeigt werden.
+
+
+### Externe Schnittstelle - News API
+Die NewsAPI ist eine externe REST-API, die Nachrichten von verschiedenen Quellen und Ländern bereitstellt. Die API bietet verschiedene Endpunkte, um Nachrichten nach Kategorien, Ländern, Schlagworten und anderen Parametern abzurufen. Die Nachrichten werden im JSON-Format zurückgegeben und können nach Bedarf gefiltert und sortiert werden. Die API erfordert eine API-Schlüsselauthentifizierung, um auf die Daten zuzugreifen, und stellt eine begrenzte Anzahl von Anfragen pro Tag zur Verfügung. Die NewsAPI bietet eine zuverlässige und umfassende Datenquelle für aktuelle Nachrichten und ist eine wertvolle Ressource für die Nachrichten-App.
+Innerhalb dieser Anwendung erfolgt die Kommunikation mit der NewsAPI durch den `ApiService`. Dieser Service sendet HTTP-Anfragen an die API, um Nachrichten für bestimmte Länder oder Schlagwörter abzurufen. Die empfangenen Daten werden dann vom `NewsService` verarbeitet und in der Redis-Datenbank zwischengespeichert. Durch diese Struktur wird eine effiziente und zuverlässige Datenverarbeitung gewährleistet, die eine schnelle und benutzerfreundliche Anwendung ermöglicht.
+
+Aufrgund der Umfrangreichen Anfragemöglichkeiten und den Anforderungen dieser Anwendung wurden nur folgende Endpunkte der NewsAPI verwendet:
+- `GET https://newsapi.org/v2/top-headlines?country=sample-country&apiKey=apikey`: Abrufen der Top-Nachrichten aus verschiedenen Quellen und Ländern.
+
+
+- `GET https://newsapi.org/v2/everything?q=sample-keyword&apiKey=apikey`: Abrufen von Nachrichten zu einem bestimmten Schlagwort oder Thema.
+
+Die verschiedenen Parameter bei der NewsAPI sind:
+- `country`: Das Land, für das die Nachrichten abgerufen werden sollen. Zum Beispiel: `de` für Deutschland, `us` für die USA.
+- `q`: Das Schlagwort, nach dem die Nachrichten gesucht werden sollen. Zum Beispiel: `Corona`.
+- `apiKey`: Der API-Schlüssel, der für die Authentifizierung bei der NewsAPI erforderlich ist.
+- `top-headlines`: Der Endpunkt für den Abruf der Top-Nachrichten.
+- `everything`: Der Endpunkt für den Abruf von Nachrichten zu einem bestimmten Schlagwort.
+
+Die API-Doku der NewsAPI ist unter folgendem Link zu finden: [NewsAPI Dokumentation](https://newsapi.org/docs/endpoints/top-headlines)
+
+# Lösungsstrategie
 
 Die Entwurfsstrategie dieses Projekts beruht in wesentlichem Maße auf sorgfältig getroffenen Technologieentscheidungen und durchdachten Systemdesigns. Diese Entscheidungen und Designs wurden speziell auf die spezifischen Anforderungen, die angestrebten Qualitätsziele und die vorgegebenen Rahmenbedingungen abgestimmt, um eine optimale Umsetzung zu gewährleisten. Durch diese gezielte Abstimmung wird sichergestellt, dass das Projekt effizient, zuverlässig und den gestellten Aufgaben entsprechend umgesetzt wird.
 
