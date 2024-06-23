@@ -320,3 +320,30 @@ Im Hinblick auf die **Übertragbarkeit** muss die Anwendung flexibel in Bezug au
 | Sicherheitslücken | Die Anwendung könnte Sicherheitslücken aufweisen, die von Angreifern ausgenutzt werden könnten, was zu Datenverlust oder -manipulation führen kann. | Durchführung regelmäßiger Sicherheitsaudits, Implementierung von Sicherheitsmaßnahmen wie Verschlüsselung und Authentifizierung, sowie Schulung der Entwickler in sicheren Programmierpraktiken. | Hoch |	
 
 ## Glossar
+
+| Begriff | Beschreibung                      | 
+| ------------------ | -------------------------- |
+| React | Eine JavaScript-Bibliothek zur Erstellung von Benutzeroberflächen, die eine komponentenbasierte Architektur nutzt. |
+| Redis | Ein In-Memory-Datenbank, die als Cache und Nachrichtenbroker dient, bekannt für hohe Geschwindigkeit und Effizienz. |
+| Spring Boot | Ein Framework zur Erstellung von Microservices in Java, das schnelle und eigenständige Anwendungen ermöglicht. |
+| News API | Eine externe Schnittstelle, die aktuelle Nachrichten von verschiedenen Quellen abruft und bereitstellt. |
+| Chaching | Eine Methode zur Zwischenspeicherung von Daten, um schnelleren Zugriff und reduzierte Ladezeiten zu ermöglichen. |
+| SonerCloud | Ein Tool zur kontinuierlichen Inspektion der Codequalität, das Fehler, Schwachstellen und Verbesserungsmöglichkeiten aufzeigt. |
+| GitHub | Eine Plattform für Versionskontrolle und kollaborative Softwareentwicklung, die Git verwendet. |
+| GitHub Actions| Ein CI/CD-Tool von GitHub, das Workflows für automatisierte Software-Builds, Tests und Deployments ermöglicht. |
+| CI/CD-Pipeline | Eine Automatisierungspipeline, die kontinuierliche Integration (CI) und kontinuierliche Bereitstellung (CD) von Software ermöglicht. |
+| Fallback-Mechanismus | Ein System, das alternative Verfahren nutzt, wenn der Hauptweg fehlschlägt, um die Verfügbarkeit zu gewährleisten. |
+| ArchUnit | Ein Testframework für Architektur- und Designregeln in Java, das die Einhaltung von Architekturvorgaben überprüft. |
+| JUnit | Ein beliebtes Framework für das Testen von Java-Anwendungen durch Unit-Tests. |
+| Artillery | Ein Lasttest-Tool, das zur Prüfung der Performance und Skalierbarkeit von Anwendungen eingesetzt wird. |
+| Playwright | Ein Framework für End-to-End-Tests von Webanwendungen, das browserübergreifende Automatisierung ermöglicht. |
+| Unit-Test | Ein Test, der einzelne Komponenten oder Funktionen isoliert prüft, um deren korrekte Funktion sicherzustellen. |
+| End-to-End-Test | Ein Test, der das gesamte System von Anfang bis Ende prüft, um sicherzustellen, dass alle Komponenten zusammenarbeiten.|
+| Lasttest | Ein Test, der die Leistung eines Systems unter hoher Last oder Benutzeranzahl überprüft. |
+| Integrationstest | Ein Test, der überprüft, ob verschiedene Komponenten eines Systems korrekt zusammenarbeiten. |
+| Docker | Eine Plattform zur Containerisierung, die es ermöglicht, Anwendungen in isolierten Umgebungen zu betreiben. |
+| Docker-Compose | Ein Tool zur Definition und Verwaltung mehrerer Docker-Container, die zusammen eine Anwendung bilden. |
+| Statische Code Analyse | Eine Methode zur Überprüfung des Quellcodes ohne dessen Ausführung, um Fehler, Schwachstellen und Verbesserungspotenziale zu identifizieren. |
+
+
+
