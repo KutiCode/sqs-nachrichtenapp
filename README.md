@@ -312,8 +312,9 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
    
 ![Laufzeitdiagramm 3](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Laufzeitdiagramm%203.PNG)
 
-## Verteilungssicht
-### Infrastruktur Ebene 1
+## Verteilungsschicht
+
+### Infrastruktur
 
 ### Infrastruktur Ebene 2
 
