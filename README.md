@@ -211,6 +211,18 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 
 #### Übersichtsdiagramm
 
+![Whitebox Spring Boot Backend](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/Whitebox%20Spring%20Boot%20Backend.PNG)
+
+#### Enthaltene Bausteine
+
+| Name  | Verantwortung                      | 
+| ------------------ | -------------------------- |
+| News Controller | Bereitstellung Bereitstellung von API-Endpunkten für die Abfrage von Nachrichten|
+| News Service | Verarbeitung der Nachrichtenanfragen durch Geschäftslogik |
+| ApiService | Anbindung an die News API|
+| RedisService | Datenmodell für Brauereidaten und Datenbankkommunikation|
+
+
 ## Laufzeitsicht
 
 ### Laufzeitszenario 1
