@@ -69,6 +69,10 @@ Die Aufgabe umfasst die Erstellung und Umsetzung eines umfassenden Testkonzepts 
 
 ### Technischer- oder Verteilungskontext
 
+Das System bezieht Nachrichten von einer externen News API und lädt diese in das Spring Boot-Backend. Anschließend werden die abgerufenen Daten in der Redis-Datenbank zwischengespeichert, um eine schnelle und effiziente Datenverarbeitung zu gewährleisten. Schließlich werden die gespeicherten Nachrichten über die React-Webanwendung den Benutzern zugänglich gemacht, wodurch sie auf aktuelle Nachrichteninhalte zugreifen können.
+
+#### UML Deployment Diagramm
+
 ![Technischer Kontext](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/UML_Deployment%20Diagramm.png)
 
 | Technischer Kanal              | Eingabe                    | Ausgabe                                  | 
