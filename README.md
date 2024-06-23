@@ -377,13 +377,7 @@ Die Images für das Front- und Backend werden aus der GitHub-Registry des Projek
 ## Querschnittliche Konzept
 ### Backend UML-Klassendiagramm
 ![Klassendiagramm](https://github.com/KutiCode/sqs-nachrichtenapp/blob/main/Dokumentationsbilder/klassendiagramm.png)
-### Fachliche Struktur und Modelle
 
-### Architektur- und Entwurfsmuster
-gen
-### Unter-der-Haube
-
-### User Experience
 
 ## Architekturentscheidungen 
 
