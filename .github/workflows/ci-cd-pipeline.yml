@@ -168,7 +168,13 @@ jobs:
         run: |
           cd frontend
           npm install
-
+          
+      - name: test frontend with coverage
+        run:
+          npm test --coverage
+        env:
+            CI: true
+            
       - name: Run SonarCloud Analysis for Frontend
         working-directory: frontend
         env:
