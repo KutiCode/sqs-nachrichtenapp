@@ -375,6 +375,7 @@ Die Images für das Front- und Backend werden aus der GitHub-Registry des Projek
 
 
 ## Querschnittliche Konzept
+### Backend UML-Klassendiagramm
 
 ### Fachliche Struktur und Modelle
 
