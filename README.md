@@ -205,7 +205,11 @@ Die Aufteilung des Gesamtsystems in verschiedene Bausteine basiert auf den Prinz
 
 **Schnittstelle:**
 
-### Ebene 2
+## Ebene 1
+
+### Whitebox Spring Boot Backend
+
+#### Übersichtsdiagramm
 
 ## Laufzeitsicht
 
