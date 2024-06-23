@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = NachrichtenappApplication.class) // replace NachrichtenappApplication with your main application class
-class NachrichtenappApplicationTests {
+class NachrichtenappApplicationTest {
 
 	@Test
 	void contextLoads() {
